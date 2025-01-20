@@ -15,7 +15,7 @@ import EventsDashboard from "../../components/EventsDashboard";
 
 // Create the Apollo Client instance
 const client = new ApolloClient({
-	uri: "https://api.studio.thegraph.com/query/45871/ghengis-kahn-ai-token/version/latest",
+	uri: "https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/version/latest",
 	cache: new InMemoryCache(),
 });
 
@@ -92,17 +92,26 @@ export default function Home() {
 
 					<main className="flex flex-col items-center">
 						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
-	<h2 className="text-3xl font-semibold mb-6 text-center text-white">
-		Roadmap
-	</h2>
+							<h2 className="text-3xl font-semibold mb-6 text-center text-white">
+								Roadmap (Q1 2025)
+							</h2>
 
-	<ol className="list-decimal list-inside space-y-4 text-base text-white">
-		<li>Phase 1: Initial Launch</li>
-		<li>Phase 2: Feature Expansion</li>
-		<li>Phase 3: Community Building</li>
-		<li>Phase 4: Global Domination</li>
-	</ol>
-</section>
+							<ol className="list-decimal list-inside space-y-4 text-base text-white">
+								<li>
+									Phase 1: Initial{" "}
+									<a
+										href="https://creator.bid/agents/678e4b71970206e12577fcf4"
+										target="_blank"
+										rel="noopener noreferrer"
+										className="text-blue-400 hover:underline"
+									>
+										Launch
+									</a>
+								</li>
+								<li>Phase 2: Website and Communities Launched</li>
+								<li>Phase 3: Global Domination</li>
+							</ol>
+						</section>
 						{/* Added consistent spacing for sections */}
 						<section className="mt-10 w-full">
 							<ChartSection />
@@ -110,42 +119,38 @@ export default function Home() {
 					</main>
 
 					<footer className="mt-16 text-center space-y-6">
-	{/* Buttons */}
-	<div className="flex justify-center gap-4">
-		<a
-			href="https://twitter.com/GenghisKahnAI"
-			target="_blank"
-			rel="noopener noreferrer"
-			className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white rounded-full p-3 w-10 h-10 transition-colors"
-			aria-label="Twitter"
-		>
-			<FontAwesomeIcon icon={faTwitter} size="lg" />
-		</a>
-		<a
-			href="https://creator.bid/agents/678e4b71970206e12577fcf4"
-			target="_blank"
-			rel="noopener noreferrer"
-			className="flex items-center justify-center bg-gray-500 hover:bg-gray-600 text-white rounded-full p-3 w-10 h-10 transition-colors"
-			aria-label="Website"
-		>
-			<FontAwesomeIcon icon={faGlobe} size="lg" />
-		</a>
-		<a
-			href="https://thegraph.com"
-			target="_blank"
-			rel="noopener noreferrer"
-			className="flex items-center justify-center bg-purple-500 hover:bg-purple-600 text-white rounded-full p-3 w-10 h-10 transition-colors"
-			aria-label="The Graph"
-		>
-			{/* The Graph Logo */}
-			<img
-				src="/the-graph-logo.png"
-				alt="The Graph"
-
-			/>
-		</a>
-	</div>
-</footer>
+						{/* Buttons */}
+						<div className="flex justify-center gap-4">
+							<a
+								href="https://twitter.com/GenghisKahnAI"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white rounded-full p-3 w-10 h-10 transition-colors"
+								aria-label="Twitter"
+							>
+								<FontAwesomeIcon icon={faTwitter} size="lg" />
+							</a>
+							<a
+								href="https://creator.bid/agents/678e4b71970206e12577fcf4"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center justify-center bg-gray-500 hover:bg-gray-600 text-white rounded-full p-3 w-10 h-10 transition-colors"
+								aria-label="Website"
+							>
+								<FontAwesomeIcon icon={faGlobe} size="lg" />
+							</a>
+							<a
+								href="https://thegraph.com"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center justify-center bg-purple-500 hover:bg-purple-600 text-white rounded-full p-3 w-10 h-10 transition-colors"
+								aria-label="The Graph"
+							>
+								{/* The Graph Logo */}
+								<img src="/the-graph-logo.png" alt="The Graph" />
+							</a>
+						</div>
+					</footer>
 				</div>
 			</div>
 		</ApolloProvider>
