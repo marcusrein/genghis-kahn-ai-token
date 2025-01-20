@@ -114,11 +114,11 @@ export default function Home() {
 										rel="noopener noreferrer"
 										className="text-blue-400 hover:underline"
 									>
-										Launch
+										Launch ✅
 									</a>
 								</li>
-								<li>Phase 2: Website and Communities Launched</li>
-								<li>Phase 3: Global Domination</li>
+								<li>Phase 2: Website and Communities Launched ✅</li>
+								<li>Phase 3: Global Domination </li>
 							</ol>
 						</section>
 						{/* Added consistent spacing for sections */}
