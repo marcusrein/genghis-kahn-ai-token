@@ -1,20 +1,17 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
-import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from "@apollo/client";
 import {
-	LineChart,
-	Line,
-	XAxis,
-	YAxis,
-	CartesianGrid,
-	Tooltip,
-	Legend,
-	ResponsiveContainer
-} from "recharts";
+	ApolloClient,
+	InMemoryCache,
+	ApolloProvider,
+	useQuery,
+	gql,
+} from "@apollo/client";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import EventsDashboard from "../../components/EventsDashboard";
-
 
 // Create the Apollo Client instance
 const client = new ApolloClient({
@@ -37,9 +34,18 @@ const GET_SUBSCRIBED_EVENTS = gql`
 function ChartSection() {
 	const { loading, error, data } = useQuery(GET_SUBSCRIBED_EVENTS);
 
-	if (loading) return <p>Loading Chart...</p>;
-	if (error) return <p>Error loading chart data: {error.message}</p>;
-	if (!data?.subscribeds?.length) return <p>No subscribed events found.</p>;
+	if (loading)
+		return <p className="text-lg text-white py-4">Loading Chart...</p>;
+	if (error)
+		return (
+			<p className="text-lg text-red-400 py-4">
+				Error loading chart data: {error.message}
+			</p>
+		);
+	if (!data?.subscribeds?.length)
+		return (
+			<p className="text-lg text-white py-4">No subscribed events found.</p>
+		);
 
 	// Transform data for the chart
 	const chartData = data.subscribeds.map((event: any) => ({
@@ -49,9 +55,8 @@ function ChartSection() {
 	}));
 
 	return (
-		<div className="bg-black/70 text-white rounded-lg shadow-lg p-8 w-full max-w-2xl mt-10">
-		
-			<div className="mt-10">
+		<div className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
+			<div className="mt-6">
 				<EventsDashboard />
 			</div>
 		</div>
@@ -72,62 +77,76 @@ export default function Home() {
 				}}
 			>
 				{/* Overlay for better text contrast */}
-				<div className="absolute inset-0 bg-black/50"></div>
+				<div className="absolute inset-0 bg-black/50 z-0"></div>
 
 				{/* Content */}
-				<header className="relative text-center mb-16 z-10">
-					<h1 className="text-5xl sm:text-7xl font-bold mb-4">
-						Ghengis Kahn: The Digital Conqueror
-					</h1>
-					<p className="text-lg sm:text-xl max-w-2xl mx-auto">
-						Embark on a journey through the digital frontier and shape the future of innovation.
-					</p>
-				</header>
+				<div className="relative z-10">
+					<header className="text-center space-y-4 mb-10">
+						<h1 className="text-5xl sm:text-7xl font-bold text-white">
+							Genghis Kahn AI
+						</h1>
+						<p className="text-lg sm:text-xl max-w-2xl mx-auto text-white">
+							Join Genghis Kahn AI and become part of the future of AI Tokens
+						</p>
+					</header>
 
-				<main className="relative flex flex-col items-center gap-16 z-10">
-					
-					<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 w-full max-w-2xl">
-						<h2 className="text-3xl font-semibold mb-4">Roadmap</h2>
-						<ol className="list-decimal list-inside space-y-2">
-							<li>Phase 1: Initial Launch</li>
-							<li>Phase 2: Feature Expansion</li>
-							<li>Phase 3: Community Building</li>
-							<li>Phase 4: Global Domination</li>
-						</ol>
-					</section>
+					<main className="flex flex-col items-center">
+						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
+	<h2 className="text-3xl font-semibold mb-6 text-center text-white">
+		Roadmap
+	</h2>
 
-					<ChartSection />
+	<ol className="list-decimal list-inside space-y-4 text-base text-white">
+		<li>Phase 1: Initial Launch</li>
+		<li>Phase 2: Feature Expansion</li>
+		<li>Phase 3: Community Building</li>
+		<li>Phase 4: Global Domination</li>
+	</ol>
+</section>
+						{/* Added consistent spacing for sections */}
+						<section className="mt-10 w-full">
+							<ChartSection />
+						</section>
+					</main>
 
-					<div className="flex gap-4 items-center flex-col sm:flex-row">
-						<a
-							className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-blue-600 text-white gap-2 hover:bg-blue-800 text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-							href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							<Image
-								className="dark:invert"
-								src="/vercel.svg"
-								alt="Vercel logomark"
-								width={20}
-								height={20}
-							/>
-							Deploy now
-						</a>
-						<a
-							className="rounded-full border border-solid border-white/20 transition-colors flex items-center justify-center hover:bg-white/10 text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-							href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-							target="_blank"
-							rel="noopener noreferrer"
-						>
-							Read our docs
-						</a>
-					</div>
-				</main>
+					<footer className="mt-16 text-center space-y-6">
+	{/* Buttons */}
+	<div className="flex justify-center gap-4">
+		<a
+			href="https://twitter.com/GenghisKahnAI"
+			target="_blank"
+			rel="noopener noreferrer"
+			className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white rounded-full p-3 w-10 h-10 transition-colors"
+			aria-label="Twitter"
+		>
+			<FontAwesomeIcon icon={faTwitter} size="lg" />
+		</a>
+		<a
+			href="https://creator.bid/agents/678e4b71970206e12577fcf4"
+			target="_blank"
+			rel="noopener noreferrer"
+			className="flex items-center justify-center bg-gray-500 hover:bg-gray-600 text-white rounded-full p-3 w-10 h-10 transition-colors"
+			aria-label="Website"
+		>
+			<FontAwesomeIcon icon={faGlobe} size="lg" />
+		</a>
+		<a
+			href="https://thegraph.com"
+			target="_blank"
+			rel="noopener noreferrer"
+			className="flex items-center justify-center bg-purple-500 hover:bg-purple-600 text-white rounded-full p-3 w-10 h-10 transition-colors"
+			aria-label="The Graph"
+		>
+			{/* The Graph Logo */}
+			<img
+				src="/the-graph-logo.png"
+				alt="The Graph"
 
-				<footer className="relative mt-16 text-center z-10">
-					<p className="text-sm">© 2023 Ghengis Kahn. All rights reserved.</p>
-				</footer>
+			/>
+		</a>
+	</div>
+</footer>
+				</div>
 			</div>
 		</ApolloProvider>
 	);
