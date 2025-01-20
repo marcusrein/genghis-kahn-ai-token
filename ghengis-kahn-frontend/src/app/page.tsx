@@ -68,26 +68,31 @@ function ChartSection() {
 export default function Home() {
 	return (
 		<ApolloProvider client={client}>
-			<div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-orange-500 via-purple-700 to-blue-900 text-white p-8">
-				<header className="text-center mb-16">
+			<div
+				className="relative flex flex-col items-center justify-center min-h-screen text-white p-8"
+				style={{
+					backgroundImage: 'url("/backdrop.png")',
+					backgroundSize: "cover",
+					backgroundPosition: "center",
+					backgroundRepeat: "no-repeat",
+					filter: "brightness(70%) contrast(1.1)",
+				}}
+			>
+				{/* Overlay for better text contrast */}
+				<div className="absolute inset-0 bg-black/50"></div>
+
+				{/* Content */}
+				<header className="relative text-center mb-16 z-10">
 					<h1 className="text-5xl sm:text-7xl font-bold mb-4">
 						Ghengis Kahn: The Digital Conqueror
 					</h1>
-					<p className="text-lg sm:text-xl">
-						Embark on a journey through the digital frontier.
+					<p className="text-lg sm:text-xl max-w-2xl mx-auto">
+						Embark on a journey through the digital frontier and shape the future of innovation.
 					</p>
 				</header>
 
-				<main className="flex flex-col items-center gap-16">
-					<Image
-						className="dark:invert"
-						src="/next.svg"
-						alt="Next.js logo"
-						width={180}
-						height={38}
-						priority
-					/>
-
+				<main className="relative flex flex-col items-center gap-16 z-10">
+					
 					<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 w-full max-w-2xl">
 						<h2 className="text-3xl font-semibold mb-4">Roadmap</h2>
 						<ol className="list-decimal list-inside space-y-2">
@@ -127,7 +132,7 @@ export default function Home() {
 					</div>
 				</main>
 
-				<footer className="mt-16 text-center">
+				<footer className="relative mt-16 text-center z-10">
 					<p className="text-sm">© 2023 Ghengis Kahn. All rights reserved.</p>
 				</footer>
 			</div>
