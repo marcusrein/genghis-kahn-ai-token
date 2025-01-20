@@ -12,6 +12,13 @@ import {
 } from "recharts";
 import { Table } from "antd";
 
+type SubscribedEvent = {
+	id: string;
+	account: string;
+	ak: number;
+	blockTimestamp: number;
+};
+
 // GraphQL Query
 const GET_EVENTS = gql`
 	query {
@@ -59,10 +66,10 @@ export default function EventsDashboard() {
 	const { subscribeds } = data;
 
 	// Transform data for the chart
-	const chartData = subscribeds.map((event: any) => ({
-		name: formatDate(event.blockTimestamp),
-		ak: Number(event.ak),
-	}));
+const chartData = subscribeds.map((event: SubscribedEvent) => ({
+	name: formatDate(event.blockTimestamp),
+	ak: Number(event.ak),
+}));
 
 	const columns = [
 		{

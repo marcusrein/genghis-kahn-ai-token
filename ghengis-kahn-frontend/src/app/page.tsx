@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import React from "react";
 import {
 	ApolloClient,
@@ -31,6 +32,8 @@ const GET_SUBSCRIBED_EVENTS = gql`
 	}
 `;
 
+
+
 function ChartSection() {
 	const { loading, error, data } = useQuery(GET_SUBSCRIBED_EVENTS);
 
@@ -47,8 +50,14 @@ function ChartSection() {
 			<p className="text-lg text-white py-4">No subscribed events found.</p>
 		);
 
+	type SubscribedEvent = {
+		id: string;
+		account: string;
+		ak: number;
+		blockTimestamp: number;
+	};
 	// Transform data for the chart
-	const chartData = data.subscribeds.map((event: any) => ({
+	const chartData = data.subscribeds.map((event: SubscribedEvent) => ({
 		blockTimestamp: new Date(event.blockTimestamp * 1000).toLocaleString(),
 		account: event.account,
 		ak: Number(event.ak),
@@ -116,6 +125,7 @@ export default function Home() {
 						<section className="mt-10 w-full">
 							<ChartSection />
 						</section>
+						
 					</main>
 
 					<footer className="mt-16 text-center space-y-6">
@@ -147,7 +157,12 @@ export default function Home() {
 								aria-label="The Graph"
 							>
 								{/* The Graph Logo */}
-								<img src="/the-graph-logo.png" alt="The Graph" />
+								<Image
+									src="/the-graph-logo.png"
+									alt="The Graph"
+									width={100}
+									height={100}
+								/>{" "}
 							</a>
 						</div>
 					</footer>
