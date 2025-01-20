@@ -1,0 +1,62 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: AgentKey
+    network: base
+    source:
+      address: "0xcf4Aa4b9Cec12949EdEE705b0D9C480A4e2756C6"
+      abi: AgentKey
+      startBlock: 25294942
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - Cancelled
+        - Claimed
+        - ETHTransferFailed
+        - FeesCollected
+        - Initialized
+        - Initialized1
+        - Launched
+        - PairUpdated
+        - StuckETHClaimed
+        - Subscribed
+        - Transfer
+        - Unsubscribed
+      abis:
+        - name: AgentKey
+          file: ./abis/AgentKey.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: Cancelled(indexed address,uint256,(uint256,uint64))
+          handler: handleCancelled
+        - event: Claimed(indexed address,uint256,(uint256,uint64))
+          handler: handleClaimed
+        - event: ETHTransferFailed(indexed address,uint256)
+          handler: handleETHTransferFailed
+        - event: FeesCollected(uint256,uint256,uint256)
+          handler: handleFeesCollected
+        - event: Initialized(uint64)
+          handler: handleInitialized
+        - event: Initialized()
+          handler: handleInitialized1
+        - event: Launched()
+          handler: handleLaunched
+        - event: PairUpdated(address)
+          handler: handlePairUpdated
+        - event: StuckETHClaimed(indexed address,indexed address,uint256)
+          handler: handleStuckETHClaimed
+        - event: Subscribed(indexed address,uint256)
+          handler: handleSubscribed
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+        - event: Unsubscribed(indexed address,uint256,(uint256,uint64))
+          handler: handleUnsubscribed
+      file: ./src/agent-key.ts
