@@ -125,7 +125,6 @@ export default function Home() {
 						<section className="mt-10 w-full">
 							<ChartSection />
 						</section>
-						
 					</main>
 
 					<footer className="mt-16 text-center space-y-6">
@@ -150,7 +149,7 @@ export default function Home() {
 								<FontAwesomeIcon icon={faGlobe} size="lg" />
 							</a>
 							<a
-								href="https://thegraph.com"
+								href="https://thegraph.com/explorer/subgraphs/38B8w362hanTBQBUVKKjZvjJpfuAnWrho9jGKhBEPuFr?view=Query&chain=arbitrum-one"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex items-center justify-center bg-purple-500 hover:bg-purple-600 text-white rounded-full p-3 w-10 h-10 transition-colors"
