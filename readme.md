@@ -26,6 +26,12 @@ To work with the subgraph:
 2. Install dependencies using `npm install`.
 3. Use the provided scripts to generate code, build, and deploy the subgraph.
 
+## Useful Links
+
+- [CreatorBid Page](https://creator.bid/agents/678e4b71970206e12577fcf4)
+- [Twitter](https://twitter.com/GenghisKahnAI)
+- [Subgraph on The Graph](https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/version/latest)
+
 ## Learn More
 
 For more detailed information, refer to the documentation and resources provided in the respective directories.
