@@ -13,6 +13,8 @@ import {
 	Legend,
 	ResponsiveContainer
 } from "recharts";
+import EventsDashboard from "../../components/EventsDashboard";
+
 
 // Create the Apollo Client instance
 const client = new ApolloClient({
@@ -48,18 +50,9 @@ function ChartSection() {
 
 	return (
 		<div className="bg-black/70 text-white rounded-lg shadow-lg p-8 w-full max-w-2xl mt-10">
-			<h2 className="text-3xl font-semibold mb-4">Subscribed Events (Last 5)</h2>
-			<div style={{ width: "100%", height: "300px" }}>
-				<ResponsiveContainer>
-					<LineChart data={chartData}>
-						<CartesianGrid strokeDasharray="3 3" stroke="#cccccc" />
-						<XAxis dataKey="blockTimestamp" />
-						<YAxis />
-						<Tooltip />
-						<Legend />
-						<Line type="monotone" dataKey="ak" stroke="#f59e0b" strokeWidth={2} />
-					</LineChart>
-				</ResponsiveContainer>
+		
+			<div className="mt-10">
+				<EventsDashboard />
 			</div>
 		</div>
 	);

@@ -1,22 +1,15 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
 
-/**
- * This query fetches several event types from your subgraph.
- * Feel free to adjust the quantity fetched ("first:") and the fields,
- * or add new queries for other event types defined in your schema.
- */
+// GraphQL Query
 const GET_EVENTS = gql`
 	query {
-		# Fetch the 5 most recent Subscribed events
 		subscribeds(first: 5, orderBy: blockTimestamp, orderDirection: desc) {
 			id
 			account
 			ak
 			blockTimestamp
 		}
-
-		# Fetch the 5 most recent Unsubscribed events
 		unsubscribeds(first: 5, orderBy: blockTimestamp, orderDirection: desc) {
 			id
 			account
@@ -25,8 +18,6 @@ const GET_EVENTS = gql`
 			cooldown_claimableAt
 			blockTimestamp
 		}
-
-		# Fetch the 5 most recent Transfer events
 		transfers(first: 5, orderBy: blockTimestamp, orderDirection: desc) {
 			id
 			from
@@ -37,101 +28,61 @@ const GET_EVENTS = gql`
 	}
 `;
 
+// Helper Function for Date Formatting
+const formatDate = (timestamp) => {
+	const date = new Date(timestamp * 1000);
+	return date.toLocaleString();
+};
+
+// Component
 export default function EventsDashboard() {
 	const { loading, error, data } = useQuery(GET_EVENTS);
 
-	if (loading) return <p>Loading events...</p>;
-	if (error) return <p>Error loading events: {error.message}</p>;
+	if (loading) return <p className="text-center text-gray-700">Loading events...</p>;
+	if (error) return <p className="text-center text-red-500">Error: {error.message}</p>;
 
 	const { subscribeds, unsubscribeds, transfers } = data;
 
 	return (
-		<div style={{ margin: "2rem 0" }}>
-			<h2>AgentKey Event Dashboard</h2>
+		<div className="container mx-auto p-6 bg-white rounded-lg shadow-md space-y-8">
+			<h1 className="text-3xl font-bold text-gray-800 text-center">AgentKey Event Dashboard</h1>
 
-			<section style={{ marginBottom: "2rem" }}>
-				<h3>Recent Subscribed Events</h3>
-				{subscribeds.length === 0 ? (
-					<p>No subscribe events found.</p>
-				) : (
-					<table>
-						<thead>
-							<tr>
-								<th>Account</th>
-								<th>AK Amount</th>
-								<th>Timestamp</th>
-							</tr>
-						</thead>
-						<tbody>
-							{subscribeds.map((event: any) => (
-								<tr key={event.id}>
-									<td>{event.account}</td>
-									<td>{event.ak}</td>
-									<td>{event.blockTimestamp}</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
-				)}
-			</section>
-
-			<section style={{ marginBottom: "2rem" }}>
-				<h3>Recent Unsubscribed Events</h3>
-				{unsubscribeds.length === 0 ? (
-					<p>No unsubscribe events found.</p>
-				) : (
-					<table>
-						<thead>
-							<tr>
-								<th>Account</th>
-								<th>Cooldown Index</th>
-								<th>Cooldown Amount</th>
-								<th>Claimable At (Unix)</th>
-								<th>Timestamp</th>
-							</tr>
-						</thead>
-						<tbody>
-							{unsubscribeds.map((event: any) => (
-								<tr key={event.id}>
-									<td>{event.account}</td>
-									<td>{event.cooldownIndex}</td>
-									<td>{event.cooldown_amount}</td>
-									<td>{event.cooldown_claimableAt}</td>
-									<td>{event.blockTimestamp}</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
-				)}
-			</section>
-
+			{/* Subscribed Events */}
 			<section>
-				<h3>Recent Transfer Events</h3>
-				{transfers.length === 0 ? (
-					<p>No transfer events found.</p>
+				<h2 className="text-2xl font-semibold text-gray-800 mb-4">Recent Subscribed Events</h2>
+				{subscribeds.length === 0 ? (
+					<p className="text-gray-500">No subscribed events found.</p>
 				) : (
-					<table>
-						<thead>
-							<tr>
-								<th>From</th>
-								<th>To</th>
-								<th>Value</th>
-								<th>Timestamp</th>
-							</tr>
-						</thead>
-						<tbody>
-							{transfers.map((event: any) => (
-								<tr key={event.id}>
-									<td>{event.from}</td>
-									<td>{event.to}</td>
-									<td>{event.value}</td>
-									<td>{event.blockTimestamp}</td>
+					<div className="overflow-x-auto">
+						<table className="table-auto w-full border border-gray-300 rounded-lg">
+							<thead className="bg-gray-200 text-gray-700">
+								<tr>
+									<th className="px-4 py-2">Account</th>
+									<th className="px-4 py-2">AK Amount</th>
+									<th className="px-4 py-2">Timestamp</th>
 								</tr>
-							))}
-						</tbody>
-					</table>
+							</thead>
+							<tbody>
+								{subscribeds.map((event) => (
+									<tr
+										key={event.id}
+										className="bg-white border-b hover:bg-gray-100 transition-all"
+									>
+										<td className="px-4 py-2">{event.account}</td>
+										<td className="px-4 py-2">{event.ak}</td>
+										<td className="px-4 py-2">{formatDate(event.blockTimestamp)}</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
+					</div>
 				)}
 			</section>
+
+			
+
+			{/* Transfer Events */}
+		
 		</div>
 	);
 }
