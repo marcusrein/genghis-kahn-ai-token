@@ -10,7 +10,7 @@ import {
 	gql,
 } from "@apollo/client";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faTwitter, faTelegram } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import EventsDashboard from "../../components/EventsDashboard";
 
@@ -31,8 +31,6 @@ const GET_SUBSCRIBED_EVENTS = gql`
 		}
 	}
 `;
-
-
 
 function ChartSection() {
 	const { loading, error, data } = useQuery(GET_SUBSCRIBED_EVENTS);
@@ -138,6 +136,15 @@ export default function Home() {
 								aria-label="Twitter"
 							>
 								<FontAwesomeIcon icon={faTwitter} size="lg" />
+							</a>
+							<a
+								href="https://www.t.me/GenghisKahnAIToken"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="flex items-center justify-center bg-blue-400 hover:bg-blue-500 text-white rounded-full p-3 w-10 h-10 transition-colors"
+								aria-label="Telegram"
+							>
+								<FontAwesomeIcon icon={faTelegram} size="lg" />
 							</a>
 							<a
 								href="https://creator.bid/agents/678e4b71970206e12577fcf4"
