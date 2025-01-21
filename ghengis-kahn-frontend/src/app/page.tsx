@@ -112,11 +112,39 @@ export default function Home() {
 										rel="noopener noreferrer"
 										className="text-blue-400 hover:underline"
 									>
-										Launch ✅
+										Launch
 									</a>
 								</li>
-								<li>Phase 2: Website and Communities Launched ✅</li>
-								<li>Phase 3: Global Domination </li>
+								<li>
+									Phase 2: Website and Communities Launched{" "}
+									<a
+										href="https://twitter.com/GenghisKahnAI"
+										target="_blank"
+										rel="noopener noreferrer"
+										className="text-blue-400 hover:underline"
+										aria-label="Twitter"
+									>
+										<FontAwesomeIcon
+											icon={faTwitter}
+											size="sm"
+											className="inline-block w-4 h-4"
+										/>
+									</a>{" "}
+									<a
+										href="https://www.t.me/GenghisKahnAIToken"
+										target="_blank"
+										rel="noopener noreferrer"
+										className="text-blue-400 hover:underline"
+										aria-label="Telegram"
+									>
+										<FontAwesomeIcon
+											icon={faTelegram}
+											size="sm"
+											className="inline-block w-4 h-4"
+										/>
+									</a>
+								</li>
+								<li>Phase 3: Global Domination</li>
 							</ol>
 						</section>
 						{/* Added consistent spacing for sections */}
@@ -135,7 +163,11 @@ export default function Home() {
 								className="flex items-center justify-center bg-blue-500 hover:bg-blue-600 text-white rounded-full p-3 w-10 h-10 transition-colors"
 								aria-label="Twitter"
 							>
-								<FontAwesomeIcon icon={faTwitter} size="lg" />
+								<FontAwesomeIcon
+									icon={faTwitter}
+									size="lg"
+									className="w-6 h-6"
+								/>
 							</a>
 							<a
 								href="https://www.t.me/GenghisKahnAIToken"
@@ -144,7 +176,11 @@ export default function Home() {
 								className="flex items-center justify-center bg-blue-400 hover:bg-blue-500 text-white rounded-full p-3 w-10 h-10 transition-colors"
 								aria-label="Telegram"
 							>
-								<FontAwesomeIcon icon={faTelegram} size="lg" />
+								<FontAwesomeIcon
+									icon={faTelegram}
+									size="lg"
+									className="w-6 h-6"
+								/>
 							</a>
 							<a
 								href="https://creator.bid/agents/678e4b71970206e12577fcf4"
@@ -153,22 +189,21 @@ export default function Home() {
 								className="flex items-center justify-center bg-gray-500 hover:bg-gray-600 text-white rounded-full p-3 w-10 h-10 transition-colors"
 								aria-label="Website"
 							>
-								<FontAwesomeIcon icon={faGlobe} size="lg" />
+								<FontAwesomeIcon icon={faGlobe} size="lg" className="w-6 h-6" />
 							</a>
 							<a
-								href="https://thegraph.com/explorer/subgraphs/38B8w362hanTBQBUVKKjZvjJpfuAnWrho9jGKhBEPuFr?view=Query&chain=arbitrum-one"
+								href="https://thegraph.com"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex items-center justify-center bg-purple-500 hover:bg-purple-600 text-white rounded-full p-3 w-10 h-10 transition-colors"
 								aria-label="The Graph"
 							>
-								{/* The Graph Logo */}
 								<Image
 									src="/the-graph-logo.png"
 									alt="The Graph"
-									width={100}
-									height={100}
-								/>{" "}
+									width={40}
+									height={40}
+								/>
 							</a>
 						</div>
 					</footer>
