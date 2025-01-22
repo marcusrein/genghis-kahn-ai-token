@@ -30,7 +30,7 @@ To work with the subgraph:
 
 - [CreatorBid Page](https://creator.bid/agents/678e4b71970206e12577fcf4)
 - [Twitter](https://twitter.com/GenghisKahnAI)
-- [Subgraph on The Graph](https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/version/latest)
+- [Subgraph on The Graph](https://thegraph.com/explorer/subgraphs/38B8w362hanTBQBUVKKjZvjJpfuAnWrho9jGKhBEPuFr?view=Query&chain=arbitrum-one)
 
 ## Learn More
 
