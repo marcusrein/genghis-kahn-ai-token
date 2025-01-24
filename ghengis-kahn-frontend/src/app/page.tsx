@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
 	ApolloClient,
 	InMemoryCache,
@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTwitter, faTelegram } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import EventsDashboard from "../../components/EventsDashboard";
+import siteInfo from "../../data/siteInfo.json";
 
 // Create the Apollo Client instance
 const client = new ApolloClient({
@@ -71,6 +72,13 @@ function ChartSection() {
 }
 
 export default function Home() {
+	const [lastUpdated, setLastUpdated] = useState("");
+
+	useEffect(() => {
+		// Set the last updated date from the JSON file
+		setLastUpdated(new Date(siteInfo.lastUpdated).toLocaleString());
+	}, []);
+
 	return (
 		<ApolloProvider client={client}>
 			<div
@@ -95,10 +103,25 @@ export default function Home() {
 						<p className="text-lg sm:text-xl max-w-2xl mx-auto text-white">
 							Join Genghis Kahn AI and become part of the future of AI Tokens
 						</p>
+						<p className="text-sm text-gray-300">
+							Last updated: {lastUpdated}
+						</p>
 					</header>
 
 					<main className="flex flex-col items-center">
 						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
+							<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
+						
+								<Image
+									src="/roadmap.png"
+									alt="Roadmap"
+									width={800}
+									height={600}
+									className="rounded-lg shadow-lg"
+								/>
+							</section>
+						</section>
+						{/* <section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
 							<h2 className="text-3xl font-semibold mb-6 text-center text-white">
 								Roadmap (Q1 2025)
 							</h2>
@@ -146,8 +169,9 @@ export default function Home() {
 								</li>
 								<li>Phase 3: Global Domination</li>
 							</ol>
-						</section>
+						</section> */}
 						{/* Added consistent spacing for sections */}
+
 						<section className="mt-10 w-full">
 							<ChartSection />
 						</section>
