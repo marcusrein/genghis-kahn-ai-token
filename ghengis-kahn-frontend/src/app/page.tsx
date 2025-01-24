@@ -131,7 +131,7 @@ export default function Home() {
 										/>
 									</a>{" "}
 									<a
-										href="https://www.t.me/GenghisKahnAIToken"
+										href="https://www.t.me/GenghisKahnAI"
 										target="_blank"
 										rel="noopener noreferrer"
 										className="text-blue-400 hover:underline"
@@ -170,7 +170,7 @@ export default function Home() {
 								/>
 							</a>
 							<a
-								href="https://www.t.me/GenghisKahnAIToken"
+								href="https://www.t.me/GenghisKahnAI"
 								target="_blank"
 								rel="noopener noreferrer"
 								className="flex items-center justify-center bg-blue-400 hover:bg-blue-500 text-white rounded-full p-3 w-10 h-10 transition-colors"
