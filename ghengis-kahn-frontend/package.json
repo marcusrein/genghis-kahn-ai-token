@@ -8,8 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "update-site-info": "node updateSiteInfo.mjs",
-    "deploy:staging": "npm run update-site-info && vercel --env=staging",
-    "deploy:production": "npm run update-site-info && vercel --prod"
+    "deploy":"npm run update-site-info && vercel"
   },
   "dependencies": {
     "@apollo/client": "^3.12.6",
