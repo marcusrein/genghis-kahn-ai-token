@@ -103,23 +103,30 @@ export default function Home() {
 						<p className="text-lg sm:text-xl max-w-2xl mx-auto text-white">
 							Join Genghis Kahn AI and become part of the future of AI Tokens
 						</p>
-						<p className="text-sm text-gray-300">
-							Last updated: {lastUpdated}
-						</p>
+						<p className="text-sm text-gray-300">Last updated: {lastUpdated}</p>
 					</header>
 
-					<main className="flex flex-col items-center">
+					<main className="flex flex-col items-center space-y-8">
 						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
-							<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
-						
-								<Image
-									src="/roadmap.png"
-									alt="Roadmap"
-									width={800}
-									height={600}
-									className="rounded-lg shadow-lg"
-								/>
-							</section>
+							<iframe
+								width="560"
+								height="315"
+								src="https://www.youtube.com/embed/dwNoImzJuUs?si=ugP3563wsqudUMTe"
+								title="YouTube video player"
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+								referrerpolicy="strict-origin-when-cross-origin"
+								allowfullscreen
+							></iframe>
+						</section>
+						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
+							<Image
+								src="/roadmap.png"
+								alt="Roadmap"
+								width={800}
+								height={600}
+								className="rounded-lg shadow-lg"
+							/>
 						</section>
 						{/* <section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
 							<h2 className="text-3xl font-semibold mb-6 text-center text-white">
