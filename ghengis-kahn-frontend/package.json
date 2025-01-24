@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "update-site-info": "node updateSiteInfo.mjs",
+    "deploy":"npm run update-site-info && vercel"
   },
   "dependencies": {
     "@apollo/client": "^3.12.6",
