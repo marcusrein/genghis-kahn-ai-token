@@ -113,13 +113,6 @@ export default function Home() {
 
 				{/* Content */}
 				<div className="relative z-10 w-full">
-					<button
-						onClick={connectWallet}
-						className="absolute top-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-					>
-						{account ? `Connected: ${account}` : "Connect Wallet"}
-					</button>
-
 					<header className="text-center space-y-4 mb-10">
 						<h1 className="text-5xl sm:text-7xl font-bold text-white">
 							Genghis Kahn AI
@@ -130,10 +123,17 @@ export default function Home() {
 						<p className="text-sm text-gray-300">Last updated: {lastUpdated}</p>
 					</header>
 
+					<button
+						onClick={connectWallet}
+						className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-4 sm:absolute sm:top-4 sm:right-4 sm:mb-0 mx-auto block"
+					>
+						{account ? `Connected: ${account}` : "Connect Wallet"}
+					</button>
+
 					<main className="flex flex-col items-center space-y-8">
-						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
+						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl w-full">
 							<iframe
-								width="560"
+								width="100%"
 								height="315"
 								src="https://www.youtube.com/embed/dwNoImzJuUs?si=ugP3563wsqudUMTe"
 								title="YouTube video player"
@@ -143,7 +143,7 @@ export default function Home() {
 								allowFullScreen
 							></iframe>
 						</section>
-						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
+						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl w-full">
 							<Image
 								src="/roadmap.png"
 								alt="Roadmap"
