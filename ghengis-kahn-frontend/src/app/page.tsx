@@ -14,6 +14,7 @@ import { faTwitter, faTelegram } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import EventsDashboard from "../../components/EventsDashboard";
 import siteInfo from "../../data/siteInfo.json";
+import Web3 from "web3";
 
 // Create the Apollo Client instance
 const client = new ApolloClient({
@@ -73,11 +74,27 @@ function ChartSection() {
 
 export default function Home() {
 	const [lastUpdated, setLastUpdated] = useState("");
+	const [account, setAccount] = useState("");
 
 	useEffect(() => {
 		// Set the last updated date from the JSON file
 		setLastUpdated(new Date(siteInfo.lastUpdated).toLocaleString());
 	}, []);
+
+	const connectWallet = async () => {
+		if (window.ethereum) {
+			const web3 = new Web3(window.ethereum);
+			try {
+				await window.ethereum.request({ method: "eth_requestAccounts" });
+				const accounts = await web3.eth.getAccounts();
+				setAccount(accounts[0]);
+			} catch (error) {
+				console.error("User denied account access");
+			}
+		} else {
+			console.error("No Ethereum provider found");
+		}
+	};
 
 	return (
 		<ApolloProvider client={client}>
@@ -95,7 +112,14 @@ export default function Home() {
 				<div className="absolute inset-0 bg-black/50 z-0"></div>
 
 				{/* Content */}
-				<div className="relative z-10">
+				<div className="relative z-10 w-full">
+					<button
+						onClick={connectWallet}
+						className="absolute top-4 right-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+					>
+						{account ? `Connected: ${account}` : "Connect Wallet"}
+					</button>
+
 					<header className="text-center space-y-4 mb-10">
 						<h1 className="text-5xl sm:text-7xl font-bold text-white">
 							Genghis Kahn AI
