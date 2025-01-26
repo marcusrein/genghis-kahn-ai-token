@@ -119,6 +119,11 @@ type Unsubscribed @entity(immutable: true) {
 	transactionHash: Bytes!
 }
 
+type ActiveMember @entity {
+  id: Bytes!
+  account: Bytes!
+}
+
 # Timeseries entity to track new subscriptions
 type NewSubscriberData @entity(timeseries: true) {
 	id: Int8!

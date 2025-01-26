@@ -29,6 +29,7 @@ dataSources:
         - Subscribed
         - Transfer
         - Unsubscribed
+        - ActiveMember
       abis:
         - name: AgentKey
           file: ./abis/AgentKey.json

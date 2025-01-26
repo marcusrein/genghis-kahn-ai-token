@@ -30,7 +30,10 @@ import {
 	Unsubscribed,
 	NewSubscriberData,
 	NewUnsubscriberData,
+	ActiveMember
 } from "../generated/schema";
+
+import { store } from "@graphprotocol/graph-ts";
 
 export function handleApproval(event: ApprovalEvent): void {
 	let entity = new Approval(
@@ -170,6 +173,11 @@ export function handleSubscribed(event: SubscribedEvent): void {
 	newSubEntity.account = event.params.account;
 	newSubEntity.isNewSubscriber = true;
 	newSubEntity.save();
+
+  // Add a new active member
+  let activeMemberEntity = new ActiveMember(event.transaction.hash.concatI32(event.logIndex.toI32()));
+  activeMemberEntity.account = event.params.account;
+  activeMemberEntity.save();
 }
 
 export function handleTransfer(event: TransferEvent): void {
@@ -204,4 +212,10 @@ export function handleUnsubscribed(event: UnsubscribedEvent): void {
 	timeSeriesPoint.account = event.params.account;
 	timeSeriesPoint.isNewUnsubscriber = true;
 	timeSeriesPoint.save();
+
+  // Remove the active member
+  let activeMemberEntity = ActiveMember.load(event.transaction.hash.concatI32(event.logIndex.toI32()));
+  if (activeMemberEntity) {
+    store.remove("ActiveMember", activeMemberEntity.id.toString());
+  }
 }
