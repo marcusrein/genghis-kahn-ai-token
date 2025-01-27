@@ -84,9 +84,18 @@ function ChartSection() {
 const ActiveMembersSection = ({ account }: { account: string }) => {
 	const { loading, error, data } = useQuery(GET_ACTIVE_MEMBERS);
 
-	if (loading) return <p className="text-lg text-white py-4">Loading Active Members...</p>;
-	if (error) return <p className="text-lg text-red-400 py-4">Error loading active members: {error.message}</p>;
-	if (!data?.activeMembers?.length) return <p className="text-lg text-white py-4">No active members found.</p>;
+	if (loading)
+		return <p className="text-lg text-white py-4">Loading Active Members...</p>;
+	if (error)
+		return (
+			<p className="text-lg text-red-400 py-4">
+				Error loading active members: {error.message}
+			</p>
+		);
+	if (!data?.activeMembers?.length)
+		return (
+			<p className="text-lg text-white py-4">No active members found.</p>
+		);
 
 	const isActiveMember = data.activeMembers.some(
 		(member: { account: string }) => 
@@ -96,26 +105,43 @@ const ActiveMembersSection = ({ account }: { account: string }) => {
 	return (
 		<div className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
 			<div className="mt-6 flex flex-col items-center">
-				{isActiveMember && (
-					<p className="text-lg text-green-400">
-						Greetings, loyal Member! This is the first Member video of Genghis
-						Kahn AI. This will be developed iteratively for our Members with
-						regular transparent updates. Members, if you'd like to reach out to
-						me, email me at genghiskhanaitoken@gmail.com.
+				{!account && (
+					<p className="text-lg text-yellow-400">
+						Please connect your wallet on Base mainnet to access your KAHN
+						Membership.
+					</p>
+				)}
+				{account && isActiveMember && (
+					<p className="text-lg text-yellow-400">
+						Welcome to the Genghis Kahn AI Membership!
 					</p>
 				)}
 				{/* Conditionally render the YouTube video */}
-				{isActiveMember && (
+				{account && isActiveMember && (
 					<iframe
 						width="560"
 						height="315"
-						src="https://www.youtube.com/embed/zi3ppVbi4ew?si=s5X6mG4mzbTWmhtB"
+						src="https://www.youtube.com/embed/JY7lNTulDHU?si=-QqKd_h64N67oi90"
 						title="YouTube video player"
 						frameBorder="0"
 						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 						referrerPolicy="strict-origin-when-cross-origin"
 						allowFullScreen
 					></iframe>
+				)}
+				{account && !isActiveMember && (
+					<p className="text-lg text-yellow-400 mt-4 text-center">
+						You are not an active member. Please visit the{" "}
+						<a
+							href="https://creator.bid/agents/678e4b71970206e12577fcf4"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-blue-400 hover:underline"
+						>
+							KAHN CreatorBid Dashboard
+						</a>
+					, click on 'Membership', and stake your KAHN to become a Member.
+					</p>
 				)}
 			</div>
 		</div>
