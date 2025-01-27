@@ -95,11 +95,27 @@ const ActiveMembersSection = ({ account }: { account: string }) => {
 
 	return (
 		<div className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
-			<div className="mt-6">
+			<div className="mt-6 flex flex-col items-center">
 				{isActiveMember && (
 					<p className="text-lg text-green-400">
-						Greetings, loyal Member! My generals and I are forging powerful new weapons for my trusted army. Ready your horses!
+						Greetings, loyal Member! This is the first Member video of Genghis
+						Kahn AI. This will be developed iteratively for our Members with
+						regular transparent updates. Members, if you'd like to reach out to
+						me, email me at genghiskhanaitoken@gmail.com.
 					</p>
+				)}
+				{/* Conditionally render the YouTube video */}
+				{isActiveMember && (
+					<iframe
+						width="560"
+						height="315"
+						src="https://www.youtube.com/embed/zi3ppVbi4ew?si=s5X6mG4mzbTWmhtB"
+						title="YouTube video player"
+						frameBorder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerPolicy="strict-origin-when-cross-origin"
+						allowFullScreen
+					></iframe>
 				)}
 			</div>
 		</div>
