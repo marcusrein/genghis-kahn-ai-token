@@ -18,7 +18,7 @@ import Web3 from "web3";
 
 // Create the Apollo Client instance
 const client = new ApolloClient({
-	uri: "https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/version/latest",
+	uri: "https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/v0.0.5",
 	cache: new InMemoryCache(),
 });
 
@@ -30,6 +30,15 @@ const GET_SUBSCRIBED_EVENTS = gql`
 			account
 			ak
 			blockTimestamp
+		}
+	}
+`;
+
+const GET_ACTIVE_MEMBERS = gql`
+	{
+		activeMembers(first: 1000) {
+			id
+			account
 		}
 	}
 `;
@@ -67,6 +76,31 @@ function ChartSection() {
 		<div className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
 			<div className="mt-6">
 				<EventsDashboard />
+			</div>
+		</div>
+	);
+}
+
+const ActiveMembersSection = ({ account }: { account: string }) => {
+	const { loading, error, data } = useQuery(GET_ACTIVE_MEMBERS);
+
+	if (loading) return <p className="text-lg text-white py-4">Loading Active Members...</p>;
+	if (error) return <p className="text-lg text-red-400 py-4">Error loading active members: {error.message}</p>;
+	if (!data?.activeMembers?.length) return <p className="text-lg text-white py-4">No active members found.</p>;
+
+	const isActiveMember = data.activeMembers.some(
+		(member: { account: string }) => 
+		member.account.toLowerCase() === account.toLowerCase()
+	);
+
+	return (
+		<div className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
+			<div className="mt-6">
+				{isActiveMember && (
+					<p className="text-lg text-green-400">
+						Greetings, loyal Member! My generals and I are forging powerful new weapons for my trusted army. Ready your horses!
+					</p>
+				)}
 			</div>
 		</div>
 	);
@@ -131,19 +165,21 @@ export default function Home() {
 					</button>
 
 					<main className="flex flex-col items-center space-y-8">
-						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl w-full">
-							<iframe
-								width="100%"
-								height="315"
-								src="https://www.youtube.com/embed/dwNoImzJuUs?si=ugP3563wsqudUMTe"
-								title="YouTube video player"
-								frameBorder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-								referrerPolicy="strict-origin-when-cross-origin"
-								allowFullScreen
-							></iframe>
+						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl w-full mx-auto">
+							<ActiveMembersSection account={account} />
 						</section>
-						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl w-full">
+						<iframe
+							width="100%"
+							height="315"
+							src="https://www.youtube.com/embed/dwNoImzJuUs?si=ugP3563wsqudUMTe"
+							title="YouTube video player"
+							frameBorder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							referrerPolicy="strict-origin-when-cross-origin"
+							allowFullScreen
+							className="max-w-4xl w-full mx-auto"
+						></iframe>
+						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl w-full mx-auto">
 							<Image
 								src="/roadmap.png"
 								alt="Roadmap"
@@ -203,7 +239,7 @@ export default function Home() {
 						</section> */}
 						{/* Added consistent spacing for sections */}
 
-						<section className="mt-10 w-full">
+						<section className="mt-10 w-full max-w-4xl mx-auto">
 							<ChartSection />
 						</section>
 					</main>
