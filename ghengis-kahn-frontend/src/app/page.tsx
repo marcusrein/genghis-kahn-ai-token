@@ -1,6 +1,12 @@
 "use client"; // If you're using Next.js 13+ with the new app router, you might still need "use client".
 
-import { gql, useQuery } from "@apollo/client";
+import {
+  ApolloClient,
+  ApolloProvider,
+  gql,
+  InMemoryCache,
+  useQuery,
+} from "@apollo/client";
 import {
   Animated,
   Animator,
@@ -16,6 +22,11 @@ import React, { useEffect, useState } from "react";
 import Web3 from "web3";
 import EventsDashboard from "../../components/EventsDashboard";
 import siteInfo from "../../data/siteInfo.json";
+
+const client = new ApolloClient({
+  uri: "https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/version/latest",
+  cache: new InMemoryCache(),
+});
 
 // Your GraphQL queries
 const GET_SUBSCRIBED_EVENTS = gql`
@@ -157,149 +168,158 @@ export default function Home() {
   };
 
   return (
-    <Animator>
-      {/* Page Container */}
-      <Animated
-        style={{ margin: "2rem auto", maxWidth: 1200, padding: "1rem" }}
-      >
-        {/* Title + lastUpdated info */}
-        <Card>
-          <Text as="h1" style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}>
-            Genghis Kahn AI
-          </Text>
-          <Text as="p" style={{ marginBottom: "1rem" }}>
-            Join Genghis Kahn AI and become part of the future of AI Tokens
-          </Text>
-          <Text as="p" style={{ fontSize: "0.875rem", opacity: 0.8 }}>
-            Last updated: {lastUpdated}
-          </Text>
-        </Card>
+    <ApolloProvider client={client}>
+      <Animator>
+        {/* Page Container */}
+        <Animated
+          style={{ margin: "2rem auto", maxWidth: 1200, padding: "1rem" }}
+        >
+          {/* Title + lastUpdated info */}
+          <Card>
+            <Text
+              as="h1"
+              style={{ fontSize: "2.5rem", marginBottom: "0.5rem" }}
+            >
+              Genghis Kahn AI
+            </Text>
+            <Text as="p" style={{ marginBottom: "1rem" }}>
+              Join Genghis Kahn AI and become part of the future of AI Tokens
+            </Text>
+            <Text as="p" style={{ fontSize: "0.875rem", opacity: 0.8 }}>
+              Last updated: {lastUpdated}
+            </Text>
+          </Card>
 
-        {/* Connect Wallet Button */}
-        <Card>
-          <button
-            onClick={connectWallet}
-            style={{
-              cursor: "pointer",
-              padding: "0.5rem 1rem",
-              backgroundColor: "teal",
-              border: "none",
-              borderRadius: "6px",
-              color: "#FFF",
-              fontWeight: "bold",
-            }}
-          >
-            {account ? `Connected: ${account}` : "Connect Wallet"}
-          </button>
-        </Card>
-
-        {/* Active Members Section */}
-        <Card>
-          <ActiveMembersSection account={account} />
-        </Card>
-
-        {/* Example YouTube Iframe */}
-        <Card>
-          <div
-            style={{ position: "relative", paddingBottom: "56.25%", height: 0 }}
-          >
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/dwNoImzJuUs?si=ugP3563wsqudUMTe"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
+          {/* Connect Wallet Button */}
+          <Card>
+            <button
+              onClick={connectWallet}
               style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                width: "100%",
-                height: "100%",
-              }}
-            />
-          </div>
-        </Card>
-
-        {/* Roadmap Image */}
-        <Card>
-          <div style={{ textAlign: "center" }}>
-            <Image
-              src="/roadmap.png"
-              alt="Roadmap"
-              width={800}
-              height={600}
-              style={{ width: "100%", height: "auto" }}
-            />
-          </div>
-        </Card>
-
-        {/* Chart Section */}
-        <ChartSection />
-
-        {/* Footer Social Icons */}
-        <Card>
-          <div
-            style={{ display: "flex", justifyContent: "center", gap: "1rem" }}
-          >
-            <a
-              href="https://twitter.com/GenghisKahnAI"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "2.5rem",
-                height: "2.5rem",
-                backgroundColor: "#1DA1F2",
-                borderRadius: "50%",
-                color: "#fff",
+                cursor: "pointer",
+                padding: "0.5rem 1rem",
+                backgroundColor: "teal",
+                border: "none",
+                borderRadius: "6px",
+                color: "#FFF",
+                fontWeight: "bold",
               }}
             >
-              <FontAwesomeIcon icon={faTwitter} />
-            </a>
+              {account ? `Connected: ${account}` : "Connect Wallet"}
+            </button>
+          </Card>
 
-            <a
-              href="https://www.t.me/GenghisKahnAI"
-              target="_blank"
-              rel="noopener noreferrer"
+          {/* Active Members Section */}
+          <Card>
+            <ActiveMembersSection account={account} />
+          </Card>
+
+          {/* Example YouTube Iframe */}
+          <Card>
+            <div
               style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "2.5rem",
-                height: "2.5rem",
-                backgroundColor: "#0088cc",
-                borderRadius: "50%",
-                color: "#fff",
+                position: "relative",
+                paddingBottom: "56.25%",
+                height: 0,
               }}
             >
-              <FontAwesomeIcon icon={faTelegram} />
-            </a>
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/dwNoImzJuUs?si=ugP3563wsqudUMTe"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+                style={{
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                }}
+              />
+            </div>
+          </Card>
 
-            <a
-              href="https://creator.bid/agents/678e4b71970206e12577fcf4"
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "2.5rem",
-                height: "2.5rem",
-                backgroundColor: "#555",
-                borderRadius: "50%",
-                color: "#fff",
-              }}
+          {/* Roadmap Image */}
+          <Card>
+            <div style={{ textAlign: "center" }}>
+              <Image
+                src="/roadmap.png"
+                alt="Roadmap"
+                width={800}
+                height={600}
+                style={{ width: "100%", height: "auto" }}
+              />
+            </div>
+          </Card>
+
+          {/* Chart Section */}
+          <ChartSection />
+
+          {/* Footer Social Icons */}
+          <Card>
+            <div
+              style={{ display: "flex", justifyContent: "center", gap: "1rem" }}
             >
-              <FontAwesomeIcon icon={faGlobe} />
-            </a>
-          </div>
-        </Card>
-      </Animated>
-    </Animator>
+              <a
+                href="https://twitter.com/GenghisKahnAI"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "2.5rem",
+                  height: "2.5rem",
+                  backgroundColor: "#1DA1F2",
+                  borderRadius: "50%",
+                  color: "#fff",
+                }}
+              >
+                <FontAwesomeIcon icon={faTwitter} />
+              </a>
+
+              <a
+                href="https://www.t.me/GenghisKahnAI"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "2.5rem",
+                  height: "2.5rem",
+                  backgroundColor: "#0088cc",
+                  borderRadius: "50%",
+                  color: "#fff",
+                }}
+              >
+                <FontAwesomeIcon icon={faTelegram} />
+              </a>
+
+              <a
+                href="https://creator.bid/agents/678e4b71970206e12577fcf4"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  width: "2.5rem",
+                  height: "2.5rem",
+                  backgroundColor: "#555",
+                  borderRadius: "50%",
+                  color: "#fff",
+                }}
+              >
+                <FontAwesomeIcon icon={faGlobe} />
+              </a>
+            </div>
+          </Card>
+        </Animated>
+      </Animator>
+    </ApolloProvider>
   );
 }

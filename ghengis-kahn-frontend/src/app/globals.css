@@ -5,6 +5,8 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  font-family: "Titillium Web", "Segoe UI Web (West European)", Segoe UI,
+    -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {

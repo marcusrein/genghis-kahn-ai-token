@@ -1,4 +1,3 @@
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import {
   Animator,
   AnimatorGeneralProvider,
@@ -63,24 +62,18 @@ function Background() {
 export default function App({ Component, pageProps }: AppProps) {
   // Using a common pattern to have a client that can be shared across pages
 
-  const client = new ApolloClient({
-    uri: "https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/version/latest",
-    cache: new InMemoryCache(),
-  });
   return (
     <>
       <AnimatorGeneralProvider {...animatorsSettings}>
         <BleepsProvider {...bleepsSettings}>
-          <ApolloProvider client={client}>
-            {/* Animator wrapper to control animations across the app */}
-            <Animator combine manager="stagger" active={true}>
-              {/* Arwes background effect */}
-              <Background />
+          {/* Animator wrapper to control animations across the app */}
+          <Animator combine manager="stagger" active={true}>
+            {/* Arwes background effect */}
+            <Background />
 
-              {/* The actual page content */}
-              <Component {...pageProps} />
-            </Animator>
-          </ApolloProvider>
+            {/* The actual page content */}
+            <Component {...pageProps} />
+          </Animator>
         </BleepsProvider>
       </AnimatorGeneralProvider>
     </>
