@@ -14,10 +14,11 @@ import { faTwitter, faTelegram } from "@fortawesome/free-brands-svg-icons";
 import { faGlobe } from "@fortawesome/free-solid-svg-icons";
 import EventsDashboard from "../../components/EventsDashboard";
 import siteInfo from "../../data/siteInfo.json";
+import Web3 from "web3";
 
 // Create the Apollo Client instance
 const client = new ApolloClient({
-	uri: "https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/version/latest",
+	uri: "https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/v0.0.5",
 	cache: new InMemoryCache(),
 });
 
@@ -29,6 +30,15 @@ const GET_SUBSCRIBED_EVENTS = gql`
 			account
 			ak
 			blockTimestamp
+		}
+	}
+`;
+
+const GET_ACTIVE_MEMBERS = gql`
+	{
+		activeMembers(first: 1000) {
+			id
+			account
 		}
 	}
 `;
@@ -71,13 +81,96 @@ function ChartSection() {
 	);
 }
 
+const ActiveMembersSection = ({ account }: { account: string }) => {
+	const { loading, error, data } = useQuery(GET_ACTIVE_MEMBERS);
+
+	if (loading)
+		return <p className="text-lg text-white py-4">Loading Active Members...</p>;
+	if (error)
+		return (
+			<p className="text-lg text-red-400 py-4">
+				Error loading active members: {error.message}
+			</p>
+		);
+	if (!data?.activeMembers?.length)
+		return (
+			<p className="text-lg text-white py-4">No active members found.</p>
+		);
+
+	const isActiveMember = data.activeMembers.some(
+		(member: { account: string }) => 
+		member.account.toLowerCase() === account.toLowerCase()
+	);
+
+	return (
+		<div className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
+			<div className="mt-6 flex flex-col items-center">
+				{!account && (
+					<p className="text-lg text-yellow-400">
+						Please connect your wallet on Base mainnet to access your KAHN
+						Membership.
+					</p>
+				)}
+				{account && isActiveMember && (
+					<p className="text-lg text-yellow-400">
+						Welcome to the Genghis Kahn AI Membership!
+					</p>
+				)}
+				{/* Conditionally render the YouTube video */}
+				{account && isActiveMember && (
+					<iframe
+						width="560"
+						height="315"
+						src="https://www.youtube.com/embed/JY7lNTulDHU?si=-QqKd_h64N67oi90"
+						title="YouTube video player"
+						frameBorder="0"
+						allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+						referrerPolicy="strict-origin-when-cross-origin"
+						allowFullScreen
+					></iframe>
+				)}
+				{account && !isActiveMember && (
+					<p className="text-lg text-yellow-400 mt-4 text-center">
+						You are not an active member. Please visit the{" "}
+						<a
+							href="https://creator.bid/agents/678e4b71970206e12577fcf4"
+							target="_blank"
+							rel="noopener noreferrer"
+							className="text-blue-400 hover:underline"
+						>
+							KAHN CreatorBid Dashboard
+						</a>
+					, click on 'Membership', and stake your KAHN to become a Member.
+					</p>
+				)}
+			</div>
+		</div>
+	);
+}
+
 export default function Home() {
 	const [lastUpdated, setLastUpdated] = useState("");
+	const [account, setAccount] = useState("");
 
 	useEffect(() => {
 		// Set the last updated date from the JSON file
 		setLastUpdated(new Date(siteInfo.lastUpdated).toLocaleString());
 	}, []);
+
+	const connectWallet = async () => {
+		if (window.ethereum) {
+			const web3 = new Web3(window.ethereum as EthereumProvider);
+			try {
+				await window.ethereum.request({ method: "eth_requestAccounts" });
+				const accounts = await web3.eth.getAccounts();
+				setAccount(accounts[0]);
+			} catch (error) {
+				console.error("User denied account access");
+			}
+		} else {
+			console.error("No Ethereum provider found");
+		}
+	};
 
 	return (
 		<ApolloProvider client={client}>
@@ -95,7 +188,7 @@ export default function Home() {
 				<div className="absolute inset-0 bg-black/50 z-0"></div>
 
 				{/* Content */}
-				<div className="relative z-10">
+				<div className="relative z-10 w-full">
 					<header className="text-center space-y-4 mb-10">
 						<h1 className="text-5xl sm:text-7xl font-bold text-white">
 							Genghis Kahn AI
@@ -106,20 +199,29 @@ export default function Home() {
 						<p className="text-sm text-gray-300">Last updated: {lastUpdated}</p>
 					</header>
 
+					<button
+						onClick={connectWallet}
+						className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-4 sm:absolute sm:top-4 sm:right-4 sm:mb-0 mx-auto block"
+					>
+						{account ? `Connected: ${account}` : "Connect Wallet"}
+					</button>
+
 					<main className="flex flex-col items-center space-y-8">
-						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
-							<iframe
-								width="560"
-								height="315"
-								src="https://www.youtube.com/embed/dwNoImzJuUs?si=ugP3563wsqudUMTe"
-								title="YouTube video player"
-								frameBorder="0"
-								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-								referrerPolicy="strict-origin-when-cross-origin"
-								allowFullScreen
-							></iframe>
+						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl w-full mx-auto">
+							<ActiveMembersSection account={account} />
 						</section>
-						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl">
+						<iframe
+							width="100%"
+							height="315"
+							src="https://www.youtube.com/embed/dwNoImzJuUs?si=ugP3563wsqudUMTe"
+							title="YouTube video player"
+							frameBorder="0"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							referrerPolicy="strict-origin-when-cross-origin"
+							allowFullScreen
+							className="max-w-4xl w-full mx-auto"
+						></iframe>
+						<section className="bg-black/70 text-white rounded-lg shadow-lg p-8 max-w-4xl w-full mx-auto">
 							<Image
 								src="/roadmap.png"
 								alt="Roadmap"
@@ -179,7 +281,7 @@ export default function Home() {
 						</section> */}
 						{/* Added consistent spacing for sections */}
 
-						<section className="mt-10 w-full">
+						<section className="mt-10 w-full max-w-4xl mx-auto">
 							<ChartSection />
 						</section>
 					</main>
