@@ -1,4 +1,4 @@
-import { ApolloProvider } from "@apollo/client";
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
 import {
   Animator,
   AnimatorGeneralProvider,
@@ -7,7 +7,6 @@ import {
   GridLines,
   MovingLines,
 } from "@arwes/react";
-import apolloClient from "apollo-client";
 import { AppProps } from "next/app";
 import "../app/globals.css";
 
@@ -64,11 +63,15 @@ function Background() {
 export default function App({ Component, pageProps }: AppProps) {
   // Using a common pattern to have a client that can be shared across pages
 
+  const client = new ApolloClient({
+    uri: "https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/version/latest",
+    cache: new InMemoryCache(),
+  });
   return (
     <>
       <AnimatorGeneralProvider {...animatorsSettings}>
         <BleepsProvider {...bleepsSettings}>
-          <ApolloProvider client={apolloClient}>
+          <ApolloProvider client={client}>
             {/* Animator wrapper to control animations across the app */}
             <Animator combine manager="stagger" active={true}>
               {/* Arwes background effect */}
