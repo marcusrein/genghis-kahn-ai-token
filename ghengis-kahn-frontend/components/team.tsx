@@ -1,23 +1,3 @@
-import Member01 from "@/public/images/team-01.png";
-import Member02 from "@/public/images/team-02.png";
-import Member03 from "@/public/images/team-03.png";
-import Member04 from "@/public/images/team-04.png";
-import Member05 from "@/public/images/team-05.png";
-import Member06 from "@/public/images/team-06.png";
-import Member07 from "@/public/images/team-07.png";
-import Member08 from "@/public/images/team-08.png";
-import Member09 from "@/public/images/team-09.png";
-import Member10 from "@/public/images/team-10.png";
-import Member11 from "@/public/images/team-11.png";
-import Member12 from "@/public/images/team-12.png";
-import Member13 from "@/public/images/team-13.png";
-import Member14 from "@/public/images/team-14.png";
-import Member15 from "@/public/images/team-15.png";
-import Member16 from "@/public/images/team-16.png";
-import Member17 from "@/public/images/team-17.png";
-import Member18 from "@/public/images/team-18.png";
-import Member19 from "@/public/images/team-19.png";
-import Member20 from "@/public/images/team-20.png";
 import Image, { StaticImageData } from "next/image";
 
 interface Item {
@@ -27,129 +7,17 @@ interface Item {
   twitter: string;
 }
 
+const GET_ACTIVE_MEMBERS = gql`
+  {
+    activeMembers(first: 1000) {
+      id
+      account
+    }
+  }
+`;
+
 export default function Team() {
-  const items: Item[] = [
-    {
-      img: Member01,
-      name: "Sarah Barnekow",
-      role: "CEO & Co-founder",
-      twitter: "#0",
-    },
-    {
-      img: Member02,
-      name: "Alex Suevalov",
-      role: "Tech Lead",
-      twitter: "#0",
-    },
-    {
-      img: Member03,
-      name: "Mark Lamprecht",
-      role: "Software Engineer",
-      twitter: "#0",
-    },
-    {
-      img: Member04,
-      name: "Scott Bailey",
-      role: "Software Engineer",
-      twitter: "#0",
-    },
-    {
-      img: Member05,
-      name: "Vedant Hegde",
-      role: "Customer Experience",
-      twitter: "#0",
-    },
-    {
-      img: Member06,
-      name: "Lucy Radux",
-      role: "Marketing Manager",
-      twitter: "#0",
-    },
-    {
-      img: Member07,
-      name: "Devani Janssen",
-      role: "Product Design",
-      twitter: "#0",
-    },
-    {
-      img: Member08,
-      name: "Dima Trystram",
-      role: "Customer Success",
-      twitter: "#0",
-    },
-    {
-      img: Member09,
-      name: "Fraser Davidson",
-      role: "Customer Success",
-      twitter: "#0",
-    },
-    {
-      img: Member10,
-      name: "William Adkins",
-      role: "Customer Experience",
-      twitter: "#0",
-    },
-    {
-      img: Member11,
-      name: "Debbie Poulin",
-      role: "Head of Talent",
-      twitter: "#0",
-    },
-    {
-      img: Member12,
-      name: "James Kudinov",
-      role: "Product Design",
-      twitter: "#0",
-    },
-    {
-      img: Member13,
-      name: "Zhenya Rynzhuk",
-      role: "Software Engineer",
-      twitter: "#0",
-    },
-    {
-      img: Member14,
-      name: "Mary Maka",
-      role: "Enterprise Architect",
-      twitter: "#0",
-    },
-    {
-      img: Member15,
-      name: "Monty Hayton",
-      role: "Video Producer",
-      twitter: "#0",
-    },
-    {
-      img: Member16,
-      name: "Srdjan Vidakovic",
-      role: "Operations Manager",
-      twitter: "#0",
-    },
-    {
-      img: Member17,
-      name: "David Cran",
-      role: "Financial Analyst",
-      twitter: "#0",
-    },
-    {
-      img: Member18,
-      name: "Jacek Janiczak",
-      role: "Data Engineer",
-      twitter: "#0",
-    },
-    {
-      img: Member19,
-      name: "Tommy Chandra",
-      role: "Head of Design",
-      twitter: "#0",
-    },
-    {
-      img: Member20,
-      name: "Ally Golovko",
-      role: "Software Engineer",
-      twitter: "#0",
-    },
-  ];
+  const { data, loading, error } = useQuery(GET_ACTIVE_MEMBERS);
 
   return (
     <section className="relative">
