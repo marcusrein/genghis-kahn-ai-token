@@ -1,0 +1,259 @@
+[
+	{
+		"title": "Crypto Trading 101 with AI Insights",
+		"url": "https://www.edx.org/course/introduction-to-ai-powered-crypto-trading",
+		"category": "ai-crypto-trading",
+		"format": "course",
+		"skill_level": "beginner",
+		"description": "An introductory course covering the fundamentals of cryptocurrencies and how AI can assist in basic trading strategies.",
+		"time_commitment": "Approximately 4 weeks, assuming 3–5 hours per week.",
+		"tags": ["crypto", "trading", "AI", "beginners"]
+	},
+	{
+		"title": "\"AI in Crypto: Getting Started\" (Podcast Episode)",
+		"url": "https://open.spotify.com/show/ai-in-crypto-getting-started",
+		"category": "ai-crypto-trading",
+		"format": "podcast episode",
+		"skill_level": "beginner",
+		"description": "A friendly introduction to using AI for crypto trading, discussing market basics, risk management, and AI-driven tools.",
+		"time_commitment": "Approximately 45 minutes.",
+		"tags": ["podcast", "crypto", "AI", "trading"]
+	},
+	{
+		"title": "YouTube: Build Your First AI Crypto Trading Bot",
+		"url": "https://www.youtube.com/watch?v=BasicCryptoAITutorial",
+		"category": "ai-crypto-trading",
+		"format": "video tutorial",
+		"skill_level": "beginner",
+		"description": "Step-by-step demonstration of creating a simple Python-based trading bot, integrating basic AI decision-making.",
+		"time_commitment": "Approximately 1 hour.",
+		"tags": ["video", "crypto", "bot", "Python", "hands-on"]
+	},
+	{
+		"title": "GitHub: Simple Crypto Trader (AI-Assisted)",
+		"url": "https://github.com/example/simple-crypto-trader",
+		"category": "ai-crypto-trading",
+		"format": "repository",
+		"skill_level": "beginner",
+		"description": "A beginner-friendly repository illustrating a straightforward AI-assisted trading strategy using Python and an open-source ML library.",
+		"time_commitment": "3–5 hours to review and experiment.",
+		"tags": ["GitHub", "crypto", "AI", "trading", "Python"]
+	},
+
+	{
+		"title": "Udemy: Machine Learning for Algorithmic Crypto Trading",
+		"url": "https://www.udemy.com/course/ml-algorithmic-crypto-trading",
+		"category": "ai-crypto-trading",
+		"format": "course",
+		"skill_level": "intermediate",
+		"description": "Learn how to apply machine learning models to algorithmic trading scenarios in various crypto markets.",
+		"time_commitment": "6–8 weeks, assuming 5 hours per week.",
+		"tags": ["machine learning", "crypto", "trading", "algorithmic"]
+	},
+	{
+		"title": "\"High-Frequency AI Crypto Trading\" (Podcast Episode)",
+		"url": "https://podcasts.apple.com/high-frequency-ai-crypto-episode",
+		"category": "ai-crypto-trading",
+		"format": "podcast episode",
+		"skill_level": "intermediate",
+		"description": "An in-depth look at applying AI to high-frequency trading strategies, including key challenges and techniques.",
+		"time_commitment": "Approximately 1 hour.",
+		"tags": ["podcast", "AI", "trading", "markets"]
+	},
+	{
+		"title": "YouTube: AI for Real-Time Crypto Price Prediction",
+		"url": "https://www.youtube.com/watch?v=AIRealTimePrediction",
+		"category": "ai-crypto-trading",
+		"format": "video tutorial",
+		"skill_level": "intermediate",
+		"description": "Explores integrating live market data feeds with AI models to generate short-term crypto price forecasts and trade signals.",
+		"time_commitment": "Approximately 1.5 hours.",
+		"tags": [
+			"video",
+			"crypto",
+			"real-time data",
+			"forecasting",
+			"machine learning"
+		]
+	},
+	{
+		"title": "GitHub: RL-Crypto-Trader",
+		"url": "https://github.com/example/rl-crypto-trader",
+		"category": "ai-crypto-trading",
+		"format": "repository",
+		"skill_level": "intermediate",
+		"description": "A repository demonstrating how reinforcement learning can be applied to automate crypto trading strategies.",
+		"time_commitment": "5–10 hours to explore and customize.",
+		"tags": ["GitHub", "reinforcement learning", "crypto", "trading", "AI"]
+	},
+
+	{
+		"title": "Advanced Deep Learning for Crypto Markets (Course)",
+		"url": "https://www.coursera.org/advanced-deep-learning-crypto",
+		"category": "ai-crypto-trading",
+		"format": "course",
+		"skill_level": "advanced",
+		"description": "Covers sophisticated deep learning architectures (like LSTM and Transformers) for modeling complex crypto market behaviors.",
+		"time_commitment": "8–12 weeks, assuming 5–10 hours per week.",
+		"tags": ["deep learning", "crypto", "markets", "advanced"]
+	},
+	{
+		"title": "\"Quantitative AI Crypto Funds\" (Podcast Episode)",
+		"url": "https://www.quantcryptoai-podcast.com/episode12",
+		"category": "ai-crypto-trading",
+		"format": "podcast episode",
+		"skill_level": "advanced",
+		"description": "Insights from hedge fund managers who utilize cutting-edge AI techniques for portfolio optimization and risk management.",
+		"time_commitment": "Approximately 1 hour.",
+		"tags": ["podcast", "quant", "hedge fund", "advanced", "AI"]
+	},
+	{
+		"title": "YouTube: Building a Multi-Strategy AI Crypto Portfolio",
+		"url": "https://www.youtube.com/watch?v=AdvancedAICryptoStrategies",
+		"category": "ai-crypto-trading",
+		"format": "video tutorial",
+		"skill_level": "advanced",
+		"description": "Walkthrough of combining multiple AI-driven algorithms—momentum, arbitrage, and sentiment analysis—into a unified trading system.",
+		"time_commitment": "Approximately 2 hours.",
+		"tags": ["video", "arbitrage", "multi-strategy", "sentiment", "AI"]
+	},
+	{
+		"title": "GitHub: DeepCryptoTrader - Advanced Neural Nets",
+		"url": "https://github.com/example/deep-crypto-trader",
+		"category": "ai-crypto-trading",
+		"format": "repository",
+		"skill_level": "advanced",
+		"description": "An advanced toolkit featuring deep neural networks, anomaly detection, and ensemble models for sophisticated trading.",
+		"time_commitment": "10–15 hours to fully explore and customize.",
+		"tags": [
+			"GitHub",
+			"deep learning",
+			"advanced",
+			"ensemble methods",
+			"crypto"
+		]
+	},
+
+	{
+		"title": "FreeCodeCamp: Intro to Blockchain & AI Development",
+		"url": "https://www.freecodecamp.org/news/ai-blockchain-intro",
+		"category": "ai-crypto-development",
+		"format": "article series",
+		"skill_level": "beginner",
+		"description": "A step-by-step introduction to building smart contracts and incorporating basic AI functionalities in decentralized apps.",
+		"time_commitment": "Self-paced; 5–10 hours total.",
+		"tags": ["blockchain", "AI", "development", "beginners"]
+	},
+	{
+		"title": "\"AI & Crypto Dev Starter\" (Podcast Episode)",
+		"url": "https://open.spotify.com/show/ai-crypto-dev-starter",
+		"category": "ai-crypto-development",
+		"format": "podcast episode",
+		"skill_level": "beginner",
+		"description": "Covers fundamental tools and frameworks required to begin AI-augmented smart contract development on Ethereum.",
+		"time_commitment": "Approximately 40 minutes.",
+		"tags": ["podcast", "Ethereum", "smart contracts", "AI"]
+	},
+	{
+		"title": "YouTube: Building an AI-Enhanced DApp in 30 Minutes",
+		"url": "https://www.youtube.com/watch?v=AIEnhancedDApp",
+		"category": "ai-crypto-development",
+		"format": "video tutorial",
+		"skill_level": "beginner",
+		"description": "Quick demonstration of creating a simple decentralized application that uses AI for basic on-chain analytics.",
+		"time_commitment": "Approximately 30 minutes.",
+		"tags": ["video", "DApp", "analytics", "smart contracts"]
+	},
+	{
+		"title": "GitHub: Basic AI-Oriented Smart Contract Samples",
+		"url": "https://github.com/example/ai-smart-contract-samples",
+		"category": "ai-crypto-development",
+		"format": "repository",
+		"skill_level": "beginner",
+		"description": "Contains starter code for integrating AI-driven logic into Solidity smart contracts using oracles and external data feeds.",
+		"time_commitment": "3–5 hours to read and experiment.",
+		"tags": ["GitHub", "Solidity", "oracles", "AI"]
+	},
+
+	{
+		"title": "AI-Powered DApp Development (Online Course)",
+		"url": "https://www.udemy.com/course/ai-powered-dapp-development",
+		"category": "ai-crypto-development",
+		"format": "course",
+		"skill_level": "intermediate",
+		"description": "Teaches design patterns and frameworks for developing more advanced AI logic in decentralized applications, including testing and security considerations.",
+		"time_commitment": "4–6 weeks, 4 hours per week.",
+		"tags": ["DApp", "AI", "blockchain", "intermediate"]
+	},
+	{
+		"title": "\"Hybrid Smart Contracts & AI\" (Podcast Episode)",
+		"url": "https://podcasts.apple.com/hybrid-smart-contracts-ai",
+		"category": "ai-crypto-development",
+		"format": "podcast episode",
+		"skill_level": "intermediate",
+		"description": "Focuses on combining off-chain AI computations with on-chain logic, exploring the tech behind hybrid smart contracts.",
+		"time_commitment": "Approximately 1 hour.",
+		"tags": ["podcast", "hybrid contracts", "chainlink", "AI"]
+	},
+	{
+		"title": "YouTube: Tokenizing AI Models on Ethereum",
+		"url": "https://www.youtube.com/watch?v=TokenizingAIModels",
+		"category": "ai-crypto-development",
+		"format": "video tutorial",
+		"skill_level": "intermediate",
+		"description": "Learn how to tokenize AI model ownership and usage rights, enabling decentralized governance and access control.",
+		"time_commitment": "Approximately 1 hour.",
+		"tags": ["video", "tokenization", "AI models", "governance"]
+	},
+	{
+		"title": "GitHub: AI-DApp-Boilerplate",
+		"url": "https://github.com/example/AI-DApp-Boilerplate",
+		"category": "ai-crypto-development",
+		"format": "repository",
+		"skill_level": "intermediate",
+		"description": "A boilerplate project that seamlessly integrates AI inference calls with an Ethereum-based DApp, demonstrating best practices in code architecture.",
+		"time_commitment": "5–10 hours to customize and build upon.",
+		"tags": ["GitHub", "DApp", "AI inference", "architecture"]
+	},
+
+	{
+		"title": "Advanced AI & Zero-Knowledge Proof Development",
+		"url": "https://www.coursera.org/advanced-ai-zkproof",
+		"category": "ai-crypto-development",
+		"format": "course",
+		"skill_level": "advanced",
+		"description": "Delves into privacy-preserving AI computations on blockchains, focusing on zero-knowledge proofs and advanced cryptographic techniques.",
+		"time_commitment": "6–10 weeks, assuming 6 hours per week.",
+		"tags": ["ZK proofs", "advanced", "blockchain", "AI"]
+	},
+	{
+		"title": "\"Scaling AI-Driven Smart Contracts\" (Podcast Episode)",
+		"url": "https://www.a16z.com/podcast/scaling-ai-smart-contracts",
+		"category": "ai-crypto-development",
+		"format": "podcast episode",
+		"skill_level": "advanced",
+		"description": "Explores the complexities of deploying and scaling AI-intensive logic on various Layer 2 solutions and cross-chain protocols.",
+		"time_commitment": "Approximately 1 hour.",
+		"tags": ["podcast", "layer2", "scalability", "advanced"]
+	},
+	{
+		"title": "YouTube: Deep Dive into On-Chain AI Model Training",
+		"url": "https://www.youtube.com/watch?v=OnChainAIModelTraining",
+		"category": "ai-crypto-development",
+		"format": "video tutorial",
+		"skill_level": "advanced",
+		"description": "Explains experimental techniques for training AI models directly on-chain, including cost, performance, and security challenges.",
+		"time_commitment": "Approximately 2 hours.",
+		"tags": ["video", "on-chain training", "advanced", "performance"]
+	},
+	{
+		"title": "GitHub: AI-Crypto-Framework (Advanced)",
+		"url": "https://github.com/example/ai-crypto-framework",
+		"category": "ai-crypto-development",
+		"format": "repository",
+		"skill_level": "advanced",
+		"description": "A comprehensive framework for creating next-gen decentralized AI applications, featuring built-in modules for zero-knowledge proofs, advanced data pipelines, and interoperable protocols.",
+		"time_commitment": "15–20 hours to implement and integrate.",
+		"tags": ["GitHub", "framework", "advanced", "ZK proofs", "multi-chain"]
+	}
+]
