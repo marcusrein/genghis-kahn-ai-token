@@ -1,5 +1,6 @@
-import Image, { StaticImageData } from "next/image";
-
+import { gql, useQuery } from "@apollo/client";
+import BoringAvatar from "boring-avatars";
+import { StaticImageData } from "next/image";
 interface Item {
   img: StaticImageData;
   name: string;
@@ -43,18 +44,22 @@ export default function Team() {
           </div>
           {/* Team members */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-6">
-            {items.map((item, index) => (
+            {data.activeMembers.map((item, index) => (
               <div
                 key={index}
                 className="relative flex items-center justify-between py-4 pl-4 pr-3 group before:absolute before:inset-0 before:-z-10 before:border before:border-slate-300 before:bg-slate-700 before:opacity-0 hover:before:opacity-10 focus-within:before:opacity-10 before:rounded-xl before:transition-opacity"
               >
                 <div className="flex items-center space-x-4">
-                  <Image
-                    className="shrink-0"
-                    src={item.img}
-                    width="48"
-                    height="48"
-                    alt={item.name}
+                  <BoringAvatar
+                    size={48}
+                    colors={[
+                      "#000000",
+                      "#000000",
+                      "#000000",
+                      "#000000",
+                      "#000000",
+                    ]}
+                    name={item.name}
                   />
                   <div className="grow">
                     <div className="font-bold text-slate-100 mb-0.5">
