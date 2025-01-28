@@ -1,24 +1,114 @@
-import { gql, useQuery } from "@apollo/client";
 import BoringAvatar from "boring-avatars";
-import { StaticImageData } from "next/image";
+
 interface Item {
-  img: StaticImageData;
   name: string;
   role: string;
   twitter: string;
 }
 
-const GET_ACTIVE_MEMBERS = gql`
-  {
-    activeMembers(first: 1000) {
-      id
-      account
-    }
-  }
-`;
-
 export default function Team() {
-  const { data, loading, error } = useQuery(GET_ACTIVE_MEMBERS);
+  const items: Item[] = [
+    {
+      name: "Sarah Barnekow",
+      role: "CEO & Co-founder",
+      twitter: "#0",
+    },
+    {
+      name: "Alex Suevalov",
+      role: "Tech Lead",
+      twitter: "#0",
+    },
+    {
+      name: "Mark Lamprecht",
+      role: "Software Engineer",
+      twitter: "#0",
+    },
+    {
+      name: "Scott Bailey",
+      role: "Software Engineer",
+      twitter: "#0",
+    },
+    {
+      name: "Vedant Hegde",
+      role: "Customer Experience",
+      twitter: "#0",
+    },
+    {
+      name: "Lucy Radux",
+      role: "Marketing Manager",
+      twitter: "#0",
+    },
+    {
+      name: "Devani Janssen",
+      role: "Product Design",
+      twitter: "#0",
+    },
+    {
+      name: "Dima Trystram",
+      role: "Customer Success",
+      twitter: "#0",
+    },
+    {
+      name: "Fraser Davidson",
+      role: "Customer Success",
+      twitter: "#0",
+    },
+    {
+      name: "William Adkins",
+      role: "Customer Experience",
+      twitter: "#0",
+    },
+    {
+      name: "Debbie Poulin",
+      role: "Head of Talent",
+      twitter: "#0",
+    },
+    {
+      name: "James Kudinov",
+      role: "Product Design",
+      twitter: "#0",
+    },
+    {
+      name: "Zhenya Rynzhuk",
+      role: "Software Engineer",
+      twitter: "#0",
+    },
+    {
+      name: "Mary Maka",
+      role: "Enterprise Architect",
+      twitter: "#0",
+    },
+    {
+      name: "Monty Hayton",
+      role: "Video Producer",
+      twitter: "#0",
+    },
+    {
+      name: "Srdjan Vidakovic",
+      role: "Operations Manager",
+      twitter: "#0",
+    },
+    {
+      name: "David Cran",
+      role: "Financial Analyst",
+      twitter: "#0",
+    },
+    {
+      name: "Jacek Janiczak",
+      role: "Data Engineer",
+      twitter: "#0",
+    },
+    {
+      name: "Tommy Chandra",
+      role: "Head of Design",
+      twitter: "#0",
+    },
+    {
+      name: "Ally Golovko",
+      role: "Software Engineer",
+      twitter: "#0",
+    },
+  ];
 
   return (
     <section className="relative">
@@ -39,34 +129,24 @@ export default function Team() {
               Members of the $KHAN horde
             </h2>
             <p className="text-lg text-slate-400">
-              True believers in the $KHAN vision.
+              We are a team of 20+ people from all over the world.
             </p>
           </div>
           {/* Team members */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-6">
-            {data.activeMembers.map((item, index) => (
+            {items.map((item, index) => (
               <div
                 key={index}
                 className="relative flex items-center justify-between py-4 pl-4 pr-3 group before:absolute before:inset-0 before:-z-10 before:border before:border-slate-300 before:bg-slate-700 before:opacity-0 hover:before:opacity-10 focus-within:before:opacity-10 before:rounded-xl before:transition-opacity"
               >
                 <div className="flex items-center space-x-4">
-                  <BoringAvatar
-                    size={48}
-                    colors={[
-                      "#000000",
-                      "#000000",
-                      "#000000",
-                      "#000000",
-                      "#000000",
-                    ]}
-                    name={item.name}
-                  />
+                  <BoringAvatar size={48} name={item.name} />
                   <div className="grow">
                     <div className="font-bold text-slate-100 mb-0.5">
-                      {item.name}
+                      0x123...456
                     </div>
                     <div className="text-sm text-purple-500 font-medium">
-                      {item.role}
+                      10,000 $KHAN
                     </div>
                   </div>
                 </div>

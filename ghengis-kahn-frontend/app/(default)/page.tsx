@@ -10,7 +10,7 @@ import Features03 from "@/components/features-03";
 import Hero from "@/components/hero";
 import Roadmap from "@/components/roadmap";
 import Team from "@/components/team";
-import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
   uri: "https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/version/latest",
@@ -19,7 +19,7 @@ const client = new ApolloClient({
 
 export default function Home() {
   return (
-    <ApolloProvider client={client}>
+    <>
       <Hero />
       <Clients />
       <Features />
@@ -32,6 +32,6 @@ export default function Home() {
       {/* <Pricing /> */}
       {/* <Testimonials /> */}
       <Cta />
-    </ApolloProvider>
+    </>
   );
 }

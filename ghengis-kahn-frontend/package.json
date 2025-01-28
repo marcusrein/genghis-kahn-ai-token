@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.12.8",
+    "@apollo/experimental-nextjs-app-support": "^0.11.8",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@headlessui/react": "^2.1.2",
