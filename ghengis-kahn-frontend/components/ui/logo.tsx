@@ -1,11 +1,34 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import LogoImg from '@/public/images/logo.svg'
+import LogoKhan from "@/public/images/branding/khan2.png";
+import LogoMarcus from "@/public/images/branding/marcus.jpeg";
+import Image from "next/image";
+import Link from "next/link";
 
-export default function Logo() {
+export default function Logo({
+  width = 50,
+  height = 50,
+  logo = "khan",
+}: {
+  width?: number;
+  height?: number;
+  logo?: "khan" | "marcus";
+}) {
   return (
-    <Link className="inline-flex" href="/" aria-label="Cruip">
-      <Image className="max-w-none" src={LogoImg} width={38} height={38} priority alt="Stellar" />
+    <Link className="inline-flex pt-2" href="/" aria-label="Khan">
+      <div className="inline-flex relative before:absolute before:inset-0 before:bg-purple-500 before:blur-md before:rounded-full">
+        <a
+          className="rounded-full text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.purple.500),_theme(colors.purple.500))_padding-box,_linear-gradient(theme(colors.purple.500),_theme(colors.purple.200)_75%,_theme(colors.transparent)_100%)_border-box] relative  before:rounded-full before:pointer-events-none shadow"
+          href="#0"
+        >
+          <Image
+            className="max-w-none rounded-full "
+            src={logo === "khan" ? LogoKhan : LogoMarcus}
+            width={width}
+            height={height}
+            priority
+            alt="Khan"
+          />
+        </a>
+      </div>
     </Link>
-  )
+  );
 }

@@ -1,6 +1,7 @@
 import Illustration from "@/public/images/glow-bottom.svg";
 import Image from "next/image";
 import Particles from "./particles";
+import Logo from "./ui/logo";
 
 export default function Hero() {
   return (
@@ -27,6 +28,9 @@ export default function Hero() {
 
         <div className="pt-32 pb-16 md:pt-52 md:pb-32">
           {/* Hero content */}
+          <div className="flex justify-center mb-8">
+            <Logo width={128} height={128} />
+          </div>
           <div className="max-w-3xl mx-auto text-center">
             <div className="mb-6" data-aos="fade-down">
               <div className="inline-flex relative before:absolute before:inset-0 before:bg-purple-500 before:blur-md">
@@ -54,7 +58,7 @@ export default function Hero() {
               data-aos="fade-down"
               data-aos-delay="200"
             >
-              Forge your own destiny with Genghis Kahn AI Token
+              Forge your own destiny with $KHAN
             </p>
             <div
               className="max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4"
