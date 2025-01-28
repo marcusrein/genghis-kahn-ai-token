@@ -16,7 +16,7 @@ import Swiper, { Navigation } from "swiper";
 import "swiper/swiper.min.css";
 Swiper.use([Navigation]);
 
-export default function TestimonialsCarousel() {
+export default function Roadmap() {
   const [swiperInitialized, setSwiperInitialized] = useState<boolean>(false);
 
   useEffect(() => {
