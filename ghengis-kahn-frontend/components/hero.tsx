@@ -39,7 +39,7 @@ export default function Hero() {
                   href="#0"
                 >
                   <span className="relative inline-flex items-center">
-                    Buy $KHAN on Base{" "}
+                    Buy $KAHN on Base{" "}
                     <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
                       -&gt;
                     </span>
@@ -58,7 +58,7 @@ export default function Hero() {
               data-aos="fade-down"
               data-aos-delay="200"
             >
-              Forge your own destiny with $KHAN
+              Forge your own destiny with $KAHN
             </p>
             <div
               className="max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4"

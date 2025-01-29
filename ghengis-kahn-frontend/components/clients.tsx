@@ -9,7 +9,6 @@ import Client05 from '@/public/images/client-05.svg'
 import Client06 from '@/public/images/client-06.svg'
 import Client07 from '@/public/images/client-07.svg'
 import Client08 from '@/public/images/client-08.svg'
-import Client09 from '@/public/images/client-09.svg'
 
 const logos = [
   { src: Client01, alt: "Client 01" },
@@ -20,7 +19,6 @@ const logos = [
   { src: Client06, alt: "Client 06" },
   { src: Client07, alt: "Client 07" },
   { src: Client08, alt: "Client 08" },
-  { src: Client09, alt: "Client 09" },
 ];
 
 export default function Clients() {
