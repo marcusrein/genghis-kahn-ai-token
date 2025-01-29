@@ -1,6 +1,6 @@
 export const metadata = {
-  title: "Home - Stellar",
-  description: "Page description",
+  title: "Ghengis Kahn AI Token",
+  description: "Ghengis Kahn AI Token - A community-driven AI Crypto Token",
 };
 
 import Clients from "@/components/clients";
