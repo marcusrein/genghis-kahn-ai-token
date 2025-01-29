@@ -126,11 +126,10 @@ export default function Team() {
           {/* Content */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
             <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">
-              Members of the $KHAN horde
+              Members of the $KAHN Horde
             </h2>
             <p className="text-lg text-slate-400">
-              We are a team of 20+ people from all over the world.
-            </p>
+Members have exclusive access to experienced crypto developers and traders.            </p>
           </div>
           {/* Team members */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-6">
@@ -146,7 +145,7 @@ export default function Team() {
                       0x123...456
                     </div>
                     <div className="text-sm text-purple-500 font-medium">
-                      10,000 $KHAN
+                      10,000 $KAHN
                     </div>
                   </div>
                 </div>

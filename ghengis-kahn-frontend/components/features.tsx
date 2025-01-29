@@ -41,14 +41,14 @@ export default function Features() {
                 {/* Content #1 */}
                 <div>
                   <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">
-                    AI + Crypto = $KHAN
+                    AI + Crypto = $KAHN
                   </div>
                 </div>
                 <h3 className="h3 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-3">
-                  $KHAN is one part AI coin, one part community, one part AI.
+                  $KAHN is one part AI coin, one part community, one part AI.
                 </h3>
                 <p className="text-lg text-slate-400 mb-8">
-                  $KHAN is a AI coin that is built on the Base blockchain. It is
+                  $KAHN is a AI coin that is built on the Base blockchain. It is
                   a community-driven project that aims to provide a secure and
                   decentralized platform for users to interact with the
                   blockchain.

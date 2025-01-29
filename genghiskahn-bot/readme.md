@@ -1,13 +1,13 @@
-# Genghis Khan AI Bot
+# Genghis Kahn AI Bot
 
-This repository contains an AI-driven bot styled after the persona of Genghis Khan. The bot aims to guide users in exploring AI, crypto trading, and crypto development by recommending relevant learning resources.
+This repository contains an AI-driven bot styled after the persona of Genghis Kahn. The bot aims to guide users in exploring AI, crypto trading, and crypto development by recommending relevant learning resources.
 
 ## Features
 1. Personalized Guidance  
    • The bot prompts users to identify their skill level and learning style.  
    • It then matches user preferences with a curated list of resources in JSON format.
 
-2. Genghis Khan Persona  
+2. Genghis Kahn Persona  
    • Maintains a commanding yet motivational tone.  
    • Concludes responses with encouragement or clarifying questions.
 
@@ -31,7 +31,7 @@ This repository contains an AI-driven bot styled after the persona of Genghis Kh
 │   └── resource_filter.py – Optional python-side resource filtering logic.  
 ├── persona/  
 │   ├── disclaimers.py – Contains disclaimers like “not financial advice.”  
-│   └── genghis_persona.py – Stores Genghis Khan persona style, phrases, disclaimers.  
+│   └── genghis_persona.py – Stores Genghis Kahn persona style, phrases, disclaimers.  
 ├── prompts/  
 │   └── instructions.py – System-level or developer-level instructions for the model.  
 ├── main.py – Main entry point for the AI bot application.  
@@ -44,7 +44,7 @@ This repository contains an AI-driven bot styled after the persona of Genghis Kh
 
 ## Installation & Setup
 1. Clone the repository:  
-   git clone https://github.com/username/genghis-khan-ai-bot.git
+   git clone https://github.com/username/genghis-kahn-ai-bot.git
 
 2. Install dependencies:  
    pip install -r requirements.txt
@@ -58,7 +58,7 @@ This repository contains an AI-driven bot styled after the persona of Genghis Kh
 5. Interact with the bot in your terminal!  
 
 ## Usage
-• The bot initializes a conversation in a commanding Genghis Khan tone.  
+• The bot initializes a conversation in a commanding Genghis Kahn tone.  
 • Ask for AI or crypto trading/development advice.  
 • When you’re done, type “exit” or “quit” to end the session.
 

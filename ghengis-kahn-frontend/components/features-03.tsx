@@ -41,7 +41,7 @@ export default function Features03() {
               More than a meme coin
             </h2>
             <p className="text-lg text-slate-400">
-              Khan is more than a meme coin. It is a community-driven project
+              $KAHN is a community-driven project
               that aims to provide a secure and decentralized platform for users
               to interact with the blockchain.
             </p>
