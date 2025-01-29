@@ -1,2 +1,5 @@
 .vscode
 .gitattributes
+genghiskahn-bot/.venv
+ghengis-kahn-frontend/node_modules
+subgraph/generated
