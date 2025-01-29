@@ -3,25 +3,23 @@
 import { useEffect, useState } from "react";
 import BoringAvatar from "boring-avatars";
 
-// GraphQL query for ActiveMembers and Subscribeds
+// Simplified single query for activeMembers
 const GET_MEMBERS = `
-  {
-    activeMembers(first: 1000) {
-      id
-      account
-    }
-    subscribeds(first: 1000) {
-      id
-      account
-      ak
-    }
+{
+  activeMembers(first: 1000) {
+    id
+    account
+    ak
+    subscribedTxHash
   }
+}
 `;
 
 interface KahnMember {
 	id: string;
 	account: string;
 	ak: string;
+	subscribedTxHash?: string;
 }
 
 export default function Team() {
@@ -30,7 +28,9 @@ export default function Team() {
 	useEffect(() => {
 		async function fetchData() {
 			try {
-				const res = await fetch(
+				console.log("Sending fetch request to TheGraph with query:", GET_MEMBERS);
+
+				const response = await fetch(
 					"https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/version/latest",
 					{
 						method: "POST",
@@ -38,38 +38,17 @@ export default function Team() {
 						body: JSON.stringify({ query: GET_MEMBERS }),
 					}
 				);
-				const { data } = await res.json();
 
-				// Build a Map to unify activeMembers and subscribeds (no duplicates)
-				const map = new Map<string, KahnMember>();
+				console.log("Response status:", response.status);
 
-				// Add all activeMembers
-				data.activeMembers.forEach((am: any) => {
-					map.set(am.account.toLowerCase(), {
-						id: am.id,
-						account: am.account,
-						ak: "0", // Default if no matching subscribeds entry
-					});
-				});
+				const responseData = await response.json();
+				console.log("Response data from TheGraph:", responseData);
 
-				// Merge or add all subscribeds
-				data.subscribeds.forEach((sub: any) => {
-					const key = sub.account.toLowerCase();
-					if (map.has(key)) {
-						const existing = map.get(key)!;
-						existing.ak = sub.ak; // Merge the AK amount
-						map.set(key, existing);
-					} else {
-						map.set(key, {
-							id: sub.id,
-							account: sub.account,
-							ak: sub.ak,
-						});
-					}
-				});
+				// Make sure we have responseData.data and responseData.data.activeMembers
+				const fetchedMembers = responseData?.data?.activeMembers ?? [];
+				console.log("Setting fetched members:", fetchedMembers);
 
-				const mergedArray = Array.from(map.values());
-				setMembers(mergedArray);
+				setMembers(fetchedMembers);
 			} catch (error) {
 				console.error("Error fetching members:", error);
 			}
@@ -77,7 +56,6 @@ export default function Team() {
 		fetchData();
 	}, []);
 
-	// Helper to shorten addresses
 	function shortAddress(addr: string) {
 		if (!addr) return "";
 		return addr.slice(0, 6) + "..." + addr.slice(-4);
@@ -99,7 +77,7 @@ export default function Team() {
 					{/* Content */}
 					<div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
 						<h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">
-							Members of the $KAHN Horde ({members.length})
+							Members of the $KAHN Horde
 						</h2>
 						<p className="text-lg text-slate-400">
 							Members have exclusive access to experienced crypto developers and
@@ -108,7 +86,7 @@ export default function Team() {
 					</div>
 					{/* Team members */}
 					<div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-6">
-						{members.map((member) => (
+						{members.slice(0, 20).map((member) => (
 							<div
 								key={member.id}
 								className="relative flex items-center justify-between py-4 pl-4 pr-3 group before:absolute before:inset-0 before:-z-10 before:border before:border-slate-300 before:bg-slate-700 before:opacity-0 hover:before:opacity-10 focus-within:before:opacity-10 before:rounded-xl before:transition-opacity"
@@ -126,10 +104,14 @@ export default function Team() {
 								</div>
 								<a
 									className="shrink-0 text-slate-500 md:opacity-0 group-hover:opacity-100 transition-opacity focus-within:opacity-100 focus:outline-none group-hover:before:absolute group-hover:before:inset-0"
-									href="#0"
-									aria-label={`Visit ${shortAddress(
-										member.account
-									)} on block explorer`}
+									href={
+										member.subscribedTxHash
+											? `https://basescan.org/tx/${member.subscribedTxHash}`
+											: "#0"
+									}
+									target="_blank"
+									rel="noopener noreferrer"
+									aria-label={`Visit ${shortAddress(member.account)} on BaseScan`}
 								>
 									<svg
 										className="fill-current"

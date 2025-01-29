@@ -30,10 +30,18 @@ import {
 	Unsubscribed,
 	NewSubscriberData,
 	NewUnsubscriberData,
-	ActiveMember
+	ActiveMember,
 } from "../generated/schema";
 
-import { store } from "@graphprotocol/graph-ts";
+import { store, Bytes } from "@graphprotocol/graph-ts";
+
+/**
+ * These event handlers each mint a corresponding entity when an event occurs.
+ * Below, we've updated the subscription logic so that ActiveMember is keyed by
+ * each subscriber's address. When the user subscribes, we set or update the
+ * ActiveMember entity to store their AK amount and the transaction that made them subscribe. When
+ * they unsubscribe, we remove that ActiveMember from the store.
+ */
 
 export function handleApproval(event: ApprovalEvent): void {
 	let entity = new Approval(
@@ -156,8 +164,11 @@ export function handleStuckETHClaimed(event: StuckETHClaimedEvent): void {
 	entity.save();
 }
 
+/**
+ * Whenever a user subscribes: create a Subscribed entity, a NewSubscriberData,
+ * and update (or create) the ActiveMember entity keyed by their address (in hex).
+ */
 export function handleSubscribed(event: SubscribedEvent): void {
-	// Create the normal Subscribed entity
 	let subscribedEntity = new Subscribed(
 		event.transaction.hash.concatI32(event.logIndex.toI32())
 	);
@@ -168,16 +179,53 @@ export function handleSubscribed(event: SubscribedEvent): void {
 	subscribedEntity.transactionHash = event.transaction.hash;
 	subscribedEntity.save();
 
-	// Add a timeseries record for new subscriber
 	let newSubEntity = new NewSubscriberData("pseudo-sub-id");
 	newSubEntity.account = event.params.account;
 	newSubEntity.isNewSubscriber = true;
 	newSubEntity.save();
 
-  // Add a new active member
-  let activeMemberEntity = new ActiveMember(event.transaction.hash.concatI32(event.logIndex.toI32()));
-  activeMemberEntity.account = event.params.account;
-  activeMemberEntity.save();
+	// Use the account in hex as the entity ID
+	let activeMemberId = event.params.account.toHexString();
+	let activeMemberEntity = ActiveMember.load(activeMemberId);
+	if (!activeMemberEntity) {
+		activeMemberEntity = new ActiveMember(activeMemberId);
+	}
+
+	activeMemberEntity.account = event.params.account;
+	activeMemberEntity.ak = event.params.ak;
+	activeMemberEntity.subscribedTxHash = event.transaction.hash;
+	activeMemberEntity.save();
+}
+
+/**
+ * Whenever a user unsubscribes: create Unsubscribed and NewUnsubscriberData,
+ * then remove that user from ActiveMember using the hex ID. This ensures
+ * only truly active subscribers remain.
+ */
+export function handleUnsubscribed(event: UnsubscribedEvent): void {
+	let unsubEntity = new Unsubscribed(
+		event.transaction.hash.concatI32(event.logIndex.toI32())
+	);
+	unsubEntity.account = event.params.account;
+	unsubEntity.cooldownIndex = event.params.cooldownIndex;
+	unsubEntity.cooldown_amount = event.params.cooldown.amount;
+	unsubEntity.cooldown_claimableAt = event.params.cooldown.claimableAt;
+	unsubEntity.blockNumber = event.block.number;
+	unsubEntity.blockTimestamp = event.block.timestamp;
+	unsubEntity.transactionHash = event.transaction.hash;
+	unsubEntity.save();
+
+	let timeSeriesPoint = new NewUnsubscriberData("pseudo-unsub-id");
+	timeSeriesPoint.account = event.params.account;
+	timeSeriesPoint.isNewUnsubscriber = true;
+	timeSeriesPoint.save();
+
+	// Remove the ActiveMember by hex ID
+	let activeMemberId = event.params.account.toHexString();
+	let activeMemberEntity = ActiveMember.load(activeMemberId);
+	if (activeMemberEntity) {
+		store.remove("ActiveMember", activeMemberId);
+	}
 }
 
 export function handleTransfer(event: TransferEvent): void {
@@ -191,31 +239,4 @@ export function handleTransfer(event: TransferEvent): void {
 	entity.blockTimestamp = event.block.timestamp;
 	entity.transactionHash = event.transaction.hash;
 	entity.save();
-}
-
-export function handleUnsubscribed(event: UnsubscribedEvent): void {
-	// Create the normal Unsubscribed entity
-	let unsubEntity = new Unsubscribed(
-		event.transaction.hash.concatI32(event.logIndex.toI32())
-	);
-	unsubEntity.account = event.params.account;
-	unsubEntity.cooldownIndex = event.params.cooldownIndex;
-	unsubEntity.cooldown_amount = event.params.cooldown.amount;
-	unsubEntity.cooldown_claimableAt = event.params.cooldown.claimableAt;
-	unsubEntity.blockNumber = event.block.number;
-	unsubEntity.blockTimestamp = event.block.timestamp;
-	unsubEntity.transactionHash = event.transaction.hash;
-	unsubEntity.save();
-
-	// Add a timeseries record for new unsubscriber
-	let timeSeriesPoint = new NewUnsubscriberData("pseudo-unsub-id");
-	timeSeriesPoint.account = event.params.account;
-	timeSeriesPoint.isNewUnsubscriber = true;
-	timeSeriesPoint.save();
-
-  // Remove the active member
-  let activeMemberEntity = ActiveMember.load(event.transaction.hash.concatI32(event.logIndex.toI32()));
-  if (activeMemberEntity) {
-    store.remove("ActiveMember", activeMemberEntity.id.toString());
-  }
 }

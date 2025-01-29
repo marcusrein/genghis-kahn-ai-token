@@ -120,8 +120,10 @@ type Unsubscribed @entity(immutable: true) {
 }
 
 type ActiveMember @entity {
-  id: Bytes!
-  account: Bytes!
+	id: ID!
+	account: Bytes!
+	ak: BigInt!
+	subscribedTxHash: Bytes!
 }
 
 # Timeseries entity to track new subscriptions
@@ -155,3 +157,4 @@ type NewUnsubscriberStats
 	timestamp: Timestamp!
 	totalNewUnsubscribers: Int8! @aggregate(fn: "count")
 }
+
