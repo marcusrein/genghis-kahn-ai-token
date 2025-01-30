@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMembers } from "../hooks/useMembers";
 import BoringAvatar from "boring-avatars";
 
 // Simplified single query for activeMembers
@@ -23,38 +23,7 @@ interface KahnMember {
 }
 
 export default function Team() {
-	const [members, setMembers] = useState<KahnMember[]>([]);
-
-	useEffect(() => {
-		async function fetchData() {
-			try {
-				console.log("Sending fetch request to TheGraph with query:", GET_MEMBERS);
-
-				const response = await fetch(
-					"https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/version/latest",
-					{
-						method: "POST",
-						headers: { "Content-Type": "application/json" },
-						body: JSON.stringify({ query: GET_MEMBERS }),
-					}
-				);
-
-				console.log("Response status:", response.status);
-
-				const responseData = await response.json();
-				console.log("Response data from TheGraph:", responseData);
-
-				// Make sure we have responseData.data and responseData.data.activeMembers
-				const fetchedMembers = responseData?.data?.activeMembers ?? [];
-				console.log("Setting fetched members:", fetchedMembers);
-
-				setMembers(fetchedMembers);
-			} catch (error) {
-				console.error("Error fetching members:", error);
-			}
-		}
-		fetchData();
-	}, []);
+	const { members, loading, error } = useMembers();
 
 	function shortAddress(addr: string) {
 		if (!addr) return "";
@@ -86,6 +55,8 @@ export default function Team() {
 					</div>
 					{/* Team members */}
 					<div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 sm:gap-6">
+						{loading && <p>Loading members...</p>}
+						{error && <p className="text-red-500">{error}</p>}
 						{members.slice(0, 20).map((member) => (
 							<div
 								key={member.id}
