@@ -80,8 +80,8 @@ export default function Team() {
 							Members of the $KAHN Horde
 						</h2>
 						<p className="text-lg text-slate-400">
-							Members have exclusive access to experienced crypto developers and
-							traders.
+							Members have exclusive access to a private group of experienced crypto developers and
+							traders. Workshops, Q&A's, and other learning opportunities are available to $KAHN members.
 						</p>
 					</div>
 					{/* Team members */}

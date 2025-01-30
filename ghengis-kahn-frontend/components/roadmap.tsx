@@ -53,17 +53,17 @@ export default function Roadmap() {
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
             <div>
               <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">
-                Follow the horde
+                Follow the Horde
               </div>
             </div>
             <h2 className="h2 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-4">
               2025 Project Roadmap
             </h2>
-            <p className="text-lg text-slate-400">
+            {/* <p className="text-lg text-slate-400">
               All the lorem ipsum generators on the Internet tend to repeat
               predefined chunks as necessary, making this the first true
               generator on the Internet.
-            </p>
+            </p> */}
           </div>
 
           {/* Carousel built with Swiper.js [https://swiperjs.com/] */}
@@ -109,7 +109,7 @@ export default function Roadmap() {
                           </ul>
                         </div>
                       </div>
-                      <div className="text-right">
+                      {/* <div className="text-right">
                         <a
                           className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group"
                           href="#0"
@@ -119,7 +119,7 @@ export default function Roadmap() {
                             -&gt;
                           </span>
                         </a>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </HighlighterItem>
@@ -148,16 +148,16 @@ export default function Roadmap() {
                       />
                       <div className="grow">
                         <div className="font-bold text-lg mb-1">
-                          Phase 2 - Q1 End 2025
+                          Phase 2 - End of Q1 2025
                         </div>
                         <div className="text-slate-400 mb-3">
                           <ul className="list-disc list-inside">
-                            <li>Extension of AI features</li>
-                            <li>Community governance</li>
+                            <li>Extension of AI features + Devs</li>
+                            <li>Membership education begins </li>
                           </ul>
                         </div>
                       </div>
-                      <div className="text-right">
+                      {/* <div className="text-right">
                         <a
                           className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group"
                           href="#0"
@@ -167,7 +167,7 @@ export default function Roadmap() {
                             -&gt;
                           </span>
                         </a>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </HighlighterItem>
@@ -196,16 +196,16 @@ export default function Roadmap() {
                       />
                       <div className="grow">
                         <div className="font-bold text-lg mb-1">
-                          Phase 3 - Q2 2025
+                          Phase 3 - Q2-Q3 2025
                         </div>
                         <div className="text-slate-400 mb-3">
                           <ul className="list-disc list-inside">
-                            <li>Social integrations</li>
-                            <li>Community governance</li>
+                            <li>Marketing Push </li>
+                            <li>Degens + Devs Sharing Results</li>
                           </ul>
                         </div>
                       </div>
-                      <div className="text-right">
+                      {/* <div className="text-right">
                         <a
                           className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group"
                           href="#0"
@@ -215,7 +215,7 @@ export default function Roadmap() {
                             -&gt;
                           </span>
                         </a>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </HighlighterItem>
@@ -244,16 +244,15 @@ export default function Roadmap() {
                       />
                       <div className="grow">
                         <div className="font-bold text-lg mb-1">
-                          Phase 4 - Q3 2025
+                          Phase 4 - Q4 2025
                         </div>
                         <div className="text-slate-400 mb-3">
                           <ul className="list-disc list-inside">
-                            <li>AI integrations</li>
-                            <li>Community governance</li>
+                            <li>Agentic Features Extended</li>
                           </ul>
                         </div>
                       </div>
-                      <div className="text-right">
+                      {/* <div className="text-right">
                         <a
                           className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group"
                           href="#0"
@@ -263,7 +262,7 @@ export default function Roadmap() {
                             -&gt;
                           </span>
                         </a>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </HighlighterItem>
@@ -301,7 +300,7 @@ export default function Roadmap() {
                           </ul>
                         </div>
                       </div>
-                      <div className="text-right">
+                      {/* <div className="text-right">
                         <a
                           className="text-sm font-medium text-slate-300 hover:text-white inline-flex items-center transition duration-150 ease-in-out group"
                           href="#0"
@@ -311,7 +310,7 @@ export default function Roadmap() {
                             -&gt;
                           </span>
                         </a>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </HighlighterItem>

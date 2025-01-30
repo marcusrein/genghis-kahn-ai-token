@@ -21,7 +21,15 @@ const logos = [
   { src: Client08, alt: "Client 08" },
 ];
 
+// Function to shuffle an array
+function shuffleArray<T>(array: T[]): T[] {
+  return array.sort(() => Math.random() - 0.5);
+}
+
 export default function Clients() {
+  // Shuffle logos array
+  const shuffledLogos = shuffleArray(logos);
+
   return (
     <section>
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
@@ -32,10 +40,15 @@ export default function Clients() {
         </div>
 
         <div className="py-12 md:py-16">
+          {/* <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-slate-50">
+              Degens + Developers = $KAHN
+            </h2>
+          </div> */}
           <div className="overflow-hidden">
             <div className="inline-flex w-full flex-nowrap overflow-hidden [mask-image:_linear-gradient(to_right,transparent_0,_black_128px,_black_calc(100%-128px),transparent_100%)]">
               <ul className="flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-8">
-                {logos.map((logo, index) => (
+                {shuffledLogos.map((logo, index) => (
                   <li key={index}>
                     <Image src={logo.src} alt={logo.alt} />
                   </li>
@@ -45,7 +58,7 @@ export default function Clients() {
                 className="flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-8"
                 aria-hidden="true"
               >
-                {logos.map((logo, index) => (
+                {shuffledLogos.map((logo, index) => (
                   <li key={index}>
                     <Image src={logo.src} alt={logo.alt} />
                   </li>

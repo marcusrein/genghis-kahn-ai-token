@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+
 import Illustration from "@/public/images/glow-top.svg";
 import { Transition } from "@headlessui/react";
 import Image from "next/image";
@@ -41,17 +42,16 @@ export default function Features() {
                 {/* Content #1 */}
                 <div>
                   <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">
-                    AI + Crypto = $KAHN
+                    A New Kind of AI Token
                   </div>
                 </div>
                 <h3 className="h3 bg-clip-text text-transparent bg-gradient-to-r from-slate-200/60 via-slate-200 to-slate-200/60 pb-3">
-                  $KAHN is one part AI coin, one part community, one part AI.
+                  $KAHN = Dev + Degen
                 </h3>
                 <p className="text-lg text-slate-400 mb-8">
-                  $KAHN is a AI coin that is built on the Base blockchain. It is
-                  a community-driven project that aims to provide a secure and
-                  decentralized platform for users to interact with the
-                  blockchain.
+                  $KAHN aims to bring together crypto Developers and Degens to create
+                  mindshare and community that results in the best possible
+                  crypto AI and learning experience possible.
                 </p>
                 <div className="mt-8 max-w-xs max-md:mx-auto space-y-2">
                   <button
@@ -70,7 +70,7 @@ export default function Features() {
                     >
                       <path d="M14 0a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12Zm0 14V2H2v12h12Zm-3-7H5a1 1 0 1 1 0-2h6a1 1 0 0 1 0 2Zm0 4H5a1 1 0 0 1 0-2h6a1 1 0 0 1 0 2Z" />
                     </svg>
-                    <span>AI coin</span>
+                    <span>Genghis Kahn AI</span>
                   </button>
                   <button
                     className={`flex items-center text-sm font-medium text-slate-50 rounded border bg-slate-800/25 w-full px-3 py-2 transition duration-150 ease-in-out hover:opacity-100 ${

@@ -25,6 +25,7 @@ export default function Footer() {
                     className="flex justify-center items-center text-purple-500 hover:text-purple-400 transition duration-150 ease-in-out"
                     href="https://twitter.com/GenghisKahnAI"
                     aria-label="Twitter"
+                    target="_blank"
                   >
                     <svg
                       className="w-8 h-8 fill-current"
@@ -41,6 +42,7 @@ export default function Footer() {
                     className="flex justify-center items-center text-purple-500 hover:text-purple-400 transition duration-150 ease-in-out"
                     aria-label="Github"
                     href="https://github.com/marcusrein/genghis-kahn-ai-token"
+                    target="_blank"
                   >
                     <svg
                       className="w-8 h-8 fill-current"
@@ -62,6 +64,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Features
                 </a>
@@ -70,6 +73,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Integrations
                 </a>
@@ -78,6 +82,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Pricing & Plans
                 </a>
@@ -86,6 +91,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Changelog
                 </a>
@@ -94,6 +100,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Our method
                 </a>
@@ -108,6 +115,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   About us
                 </a>
@@ -116,6 +124,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Diversity & Inclusion
                 </a>
@@ -124,6 +133,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Blog
                 </a>
@@ -132,6 +142,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Careers
                 </a>
@@ -140,6 +151,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Financial statements
                 </a>
@@ -156,6 +168,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Community
                 </a>
@@ -164,6 +177,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Terms of service
                 </a>
@@ -172,6 +186,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Report a vulnerability
                 </a>
@@ -186,6 +201,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Refund policy
                 </a>
@@ -194,6 +210,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Terms & Conditions
                 </a>
@@ -202,6 +219,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Privacy policy
                 </a>
@@ -210,6 +228,7 @@ export default function Footer() {
                 <a
                   className="text-slate-400 hover:text-slate-200 transition duration-150 ease-in-out"
                   href="#0"
+                  target="_blank"
                 >
                   Brand Kit
                 </a>

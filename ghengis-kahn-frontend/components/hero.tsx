@@ -58,7 +58,8 @@ export default function Hero() {
 							data-aos="fade-down"
 							data-aos-delay="200"
 						>
-							Forge your own destiny with $KAHN
+							A community-led Degen + Developer project to build the best crypto
+							AI.
 						</p>
 						<div
 							className="max-w-xs mx-auto sm:max-w-none sm:inline-flex sm:justify-center space-y-4 sm:space-y-0 sm:space-x-4"
@@ -114,11 +115,11 @@ export default function Hero() {
 							<div>
 								<a
 									className="btn text-slate-200 hover:text-white bg-slate-900 bg-opacity-25 hover:bg-opacity-30 w-full transition duration-150 ease-in-out"
-									href="https://thegraph.com/explorer/subgraphs/38B8w362hanTBQBUVKKjZvjJpfuAnWrho9jGKhBEPuFr?view=Query&chain=arbitrum-one"
+									href="https://www.youtube.com/playlist?list=PL5gmiBnqoeeSDraV9VvkRot7PjkHOvfFd"
 									target="_blank"
 									rel="noopener noreferrer"
 								>
-									<span>The Graph Subgraph</span>
+									<span>YouTube</span>
 								</a>
 							</div>
 						</div>

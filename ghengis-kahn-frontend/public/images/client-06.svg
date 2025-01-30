@@ -1,23 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="200" height="50" viewBox="0 0 200 50">
-    <!-- Airbnb-Inspired Icon -->
-    <path 
-        d="M30 10 C25 10, 20 20, 25 30 C30 40, 35 40, 40 30 C45 20, 40 10, 30 10 Z 
-           M30 14 C34 14, 38 20, 34 28 C32 32, 28 32, 26 28 C22 20, 26 14, 30 14 Z" 
-        fill="none" 
-        stroke="#CBD5E1" 
-        stroke-width="2" />
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="80" viewBox="0 0 200 80">
+    <!-- Abstract Crypto-Trader Logo Behind Text -->
+    <g transform="translate(50, 10)">
+        <!-- Weird Spirals -->
+        <path 
+            d="M40,20 C55,0, 75,10, 65,35 C55,60, 20,60, 10,35 C0,10, 15,0, 40,20 Z" 
+            fill="none" 
+            stroke="#CBD5E1" 
+            stroke-width="2" />
+        
+        <!-- Glitched Crypto Candlestick -->
+        <rect x="45" y="15" width="6" height="30" fill="#CBD5E1" />
+        <line x1="48" y1="5" x2="48" y2="15" stroke="#CBD5E1" stroke-width="1.5"/>
+        <line x1="48" y1="45" x2="48" y2="55" stroke="#CBD5E1" stroke-width="1.5"/>
 
-    <!-- "Developer B" Text -->
+        <!-- Jagged Chaotic Lines -->
+        <line x1="15" y1="20" x2="80" y2="50" stroke="#CBD5E1" stroke-width="1.5"/>
+        <line x1="10" y1="50" x2="85" y2="15" stroke="#CBD5E1" stroke-width="1.5"/>
+    </g>
+
+    <!-- Wild & Odd "Degen 2" Text on Top -->
     <text 
-        x="65%" 
+        x="50%" 
         y="50%" 
-        font-family="'Libre Baskerville', serif" 
-        font-size="28" 
+        font-family="'Bungee Shade', cursive" 
+        font-size="30" 
         font-weight="700" 
         fill="#CBD5E1" 
         text-anchor="middle" 
         dominant-baseline="middle">
-        Developer B
+        Degen 2
     </text>
 </svg>
