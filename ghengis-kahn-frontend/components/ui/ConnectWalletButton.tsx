@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ethers } from "ethers";
+import { useMembers } from "../../hooks/useMembers";
 
 interface ConnectWalletButtonProps {
   onConnect?: (address: string) => void;
@@ -13,6 +14,7 @@ export default function ConnectWalletButton({
   // Track connected address
   const [address, setAddress] = useState<string | null>(null);
   const [networkError, setNetworkError] = useState<string | null>(null);
+  const { members } = useMembers();
 
   async function handleConnect() {
     if (typeof window === "undefined" || !window.ethereum) {
@@ -63,13 +65,13 @@ export default function ConnectWalletButton({
     ? address.slice(0, 6) + "..." + address.slice(-4)
     : "Connect Wallet";
 
+  const isMember = members.some(member => member.account.toLowerCase() === address?.toLowerCase());
+
   return (
     <div className="flex items-center">
-      {networkError && (
-        <div className="text-red-500 mr-2">
-          {networkError}
-        </div>
-      )}
+      <div className="text-red-500 mr-2">
+        {networkError || (isConnected && (isMember ? "Member!" : "Not a Member!"))}
+      </div>
       <div>
         <button
           onClick={isConnected ? handleDisconnect : handleConnect}

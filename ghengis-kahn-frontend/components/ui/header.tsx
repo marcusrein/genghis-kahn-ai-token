@@ -15,11 +15,6 @@ export default function Header() {
 					</div>
 					{/* <nav>…</nav> can remain commented out or updated as needed */}
 					<ul className="flex-1 flex justify-end items-center">
-						{isConnected && (
-							<li className="mr-4 text-slate-50 text-sm">
-								Membership Gating will be enabled soon
-							</li>
-						)}
 						<li className="ml-6">
 							<ConnectWalletButton
 								onConnect={() => setIsConnected(true)}
