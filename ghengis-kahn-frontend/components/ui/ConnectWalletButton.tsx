@@ -5,11 +5,13 @@ import { useMembers } from "../../hooks/useMembers";
 interface ConnectWalletButtonProps {
   onConnect?: (address: string) => void;
   onDisconnect?: () => void;
+  onNetworkError?: (error: string) => void;
 }
 
 export default function ConnectWalletButton({
   onConnect,
   onDisconnect,
+  onNetworkError,
 }: ConnectWalletButtonProps) {
   // Track connected address
   const [address, setAddress] = useState<string | null>(null);
@@ -18,7 +20,9 @@ export default function ConnectWalletButton({
 
   async function handleConnect() {
     if (typeof window === "undefined" || !window.ethereum) {
-      setNetworkError("No crypto wallet found. Please install one (e.g., MetaMask).");
+      const error = "No crypto wallet found. Please install one (e.g., MetaMask).";
+      setNetworkError(error);
+      if (onNetworkError) onNetworkError(error);
       return;
     }
 
@@ -27,10 +31,12 @@ export default function ConnectWalletButton({
       const network = await provider.getNetwork();
 
       // Check if the network is Base Mainnet
-      const BASE_MAINNET_CHAIN_ID = BigInt(8453); // Use BigInt constructor to avoid precision loss
+      const BASE_MAINNET_CHAIN_ID = BigInt(8453);
       if (network.chainId !== BASE_MAINNET_CHAIN_ID) {
-        setNetworkError("Please switch your wallet to the Base Mainnet.");
-        return;
+        const error = "Please switch your wallet to Base Mainnet.";
+        setNetworkError(error);
+        if (onNetworkError) onNetworkError(error);
+        return; // Do not connect if not on Base Mainnet
       }
 
       const accounts = await provider.send("eth_requestAccounts", []);
@@ -44,7 +50,9 @@ export default function ConnectWalletButton({
       }
     } catch (error: any) {
       if (error?.code === -32002) {
-        setNetworkError("A wallet request is already pending. Please open your wallet to confirm or reject.");
+        const errorMsg = "A wallet request is already pending. Please open your wallet to confirm or reject.";
+        setNetworkError(errorMsg);
+        if (onNetworkError) onNetworkError(errorMsg);
       } else {
         console.error("User rejected request or another error occurred:", error);
       }
@@ -69,9 +77,36 @@ export default function ConnectWalletButton({
 
   return (
     <div className="flex items-center">
-      <div className="text-red-500 mr-2">
-        {networkError || (isConnected && (isMember ? "Member!" : "Not a Member!"))}
-      </div>
+      {/* <div className="text-red-500 mr-2">
+        {networkError || (isConnected && (
+          isMember ? (
+            <>
+              <span className="text-slate-300">Welcome Member! Join the </span>
+              <a
+                href="https://discord.gg/FckzFjK9jR"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:underline"
+              >
+                Membership Discord
+              </a>
+            </>
+          ) : (
+            <>
+              <span className="text-slate-300">You are not a Member. Visit </span>
+              <a
+                href="https://creator.bid/agents/678e4b71970206e12577fcf4"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-400 hover:underline"
+              >
+                $KAHN CreatorBid
+              </a>
+              <span className="text-slate-300"> to become a Member.</span>
+            </>
+          )
+        ))}
+      </div> */}
       <div>
         <button
           onClick={isConnected ? handleDisconnect : handleConnect}

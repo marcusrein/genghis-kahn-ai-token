@@ -26,8 +26,9 @@ export function useMembers() {
   useEffect(() => {
     async function fetchData() {
       try {
+        console.log("Fetching members with query:", GET_MEMBERS);
         const response = await fetch(
-          "https://api.studio.thegraph.com/query/45871/genghis-kahn-ai-token/version/latest",
+          `https://gateway.thegraph.com/api/${process.env.NEXT_PUBLIC_GRAPH_API_KEY}/subgraphs/id/38B8w362hanTBQBUVKKjZvjJpfuAnWrho9jGKhBEPuFr`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -36,9 +37,12 @@ export function useMembers() {
         );
 
         const responseData = await response.json();
+        console.log("Response data:", responseData);
+
         const fetchedMembers = responseData?.data?.activeMembers ?? [];
         setMembers(fetchedMembers);
       } catch (error) {
+        console.error("Error fetching members:", error);
         setError("Error fetching members");
       } finally {
         setLoading(false);
