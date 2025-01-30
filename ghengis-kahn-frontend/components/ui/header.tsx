@@ -20,12 +20,12 @@ export default function Header() {
 								Membership Gating will be enabled soon
 							</li>
 						)}
-						{/* <li className="ml-6">
+						<li className="ml-6">
 							<ConnectWalletButton
 								onConnect={() => setIsConnected(true)}
 								onDisconnect={() => setIsConnected(false)}
 							/>
-						</li> */}
+						</li>
 					</ul>
 				</div>
 			</div>
