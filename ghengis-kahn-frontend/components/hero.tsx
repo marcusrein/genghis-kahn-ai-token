@@ -4,7 +4,7 @@ import Particles from "./particles";
 import Logo from "./ui/logo";
 
 export default function Hero() {
-  return (
+	return (
 		<section>
 			<div className="relative max-w-6xl mx-auto px-4 sm:px-6">
 				{/* Particles animation */}
@@ -36,7 +36,9 @@ export default function Hero() {
 							<div className="inline-flex relative before:absolute before:inset-0 before:bg-purple-500 before:blur-md">
 								<a
 									className="btn-sm py-0.5 text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.purple.500),_theme(colors.purple.500))_padding-box,_linear-gradient(theme(colors.purple.500),_theme(colors.purple.200)_75%,_theme(colors.transparent)_100%)_border-box] relative before:absolute before:inset-0 before:bg-slate-800/50 before:rounded-full before:pointer-events-none shadow"
-									href="#0"
+									href="https://creator.bid/agents/678e4b71970206e12577fcf4"
+									target="_blank"
+									rel="noopener noreferrer"
 								>
 									<span className="relative inline-flex items-center">
 										Buy $KAHN on Base{" "}
