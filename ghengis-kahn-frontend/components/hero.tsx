@@ -124,6 +124,17 @@ export default function Hero() {
 									<span>YouTube</span>
 								</a>
 							</div>
+
+							<div>
+								<a
+									className="btn text-slate-200 hover:text-white bg-slate-900 bg-opacity-25 hover:bg-opacity-30 w-full transition duration-150 ease-in-out"
+									href="https://aiagent.gitbook.io/genghiskahnai"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<span>Whitepaper</span>
+								</a>
+							</div>
 						</div>
 					</div>
 				</div>
