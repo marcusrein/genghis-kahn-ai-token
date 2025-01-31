@@ -25,8 +25,8 @@ export default function Logo({
 			target={logo === "telegram" ? "_blank" : undefined}
 			rel={logo === "telegram" ? "noopener noreferrer" : undefined}
 		>
-			<div className="inline-flex relative before:absolute before:inset-0 before:bg-purple-500 before:blur-md before:rounded-full">
-				<div className="rounded-full text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.purple.500),_theme(colors.purple.500))_padding-box,_linear-gradient(theme(colors.purple.500),_theme(colors.purple.200)_75%,_theme(colors.transparent)_100%)_border-box] relative  before:rounded-full before:pointer-events-none shadow">
+			<div className="inline-flex relative before:absolute before:inset-0 before:bg-green-500 before:blur-md before:rounded-full">
+				<div className="rounded-full text-slate-300 hover:text-white transition duration-150 ease-in-out group [background:linear-gradient(theme(colors.green.500),_theme(colors.green.500))_padding-box,_linear-gradient(theme(colors.green.500),_theme(colors.green.200)_75%,_theme(colors.transparent)_100%)_border-box] relative  before:rounded-full before:pointer-events-none shadow">
 					<Image
 						className="max-w-none rounded-full"
 						src={chosenLogo}

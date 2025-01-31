@@ -41,7 +41,7 @@ export default function Features() {
               >
                 {/* Content #1 */}
                 <div>
-                  <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">
+                  <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-green-200 pb-3">
                     A New Kind of AI Token
                   </div>
                 </div>
@@ -58,7 +58,7 @@ export default function Features() {
                     className={`flex items-center text-sm font-medium text-slate-50 rounded border bg-slate-800/25 w-full px-3 py-2 transition duration-150 ease-in-out hover:opacity-100 ${
                       tab !== 1
                         ? "border-slate-700 opacity-50"
-                        : "border-purple-700 shadow shadow-purple-500/25"
+                        : "border-green-700 shadow shadow-green-500/25"
                     }`}
                     onClick={() => setTab(1)}
                   >
@@ -76,7 +76,7 @@ export default function Features() {
                     className={`flex items-center text-sm font-medium text-slate-50 rounded border bg-slate-800/25 w-full px-3 py-2 transition duration-150 ease-in-out hover:opacity-100 ${
                       tab !== 2
                         ? "border-slate-700 opacity-50"
-                        : "border-purple-700 shadow shadow-purple-500/25"
+                        : "border-green-700 shadow shadow-green-500/25"
                     }`}
                     onClick={() => setTab(2)}
                   >
@@ -94,7 +94,7 @@ export default function Features() {
                     className={`flex items-center text-sm font-medium text-slate-50 rounded border bg-slate-800/25 w-full px-3 py-2 transition duration-150 ease-in-out hover:opacity-100 ${
                       tab !== 3
                         ? "border-slate-700 opacity-50"
-                        : "border-purple-700 shadow shadow-purple-500/25"
+                        : "border-green-700 shadow shadow-green-500/25"
                     }`}
                     onClick={() => setTab(3)}
                   >
@@ -173,9 +173,9 @@ export default function Features() {
                       <div className="absolute inset-0 left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 pointer-events-none w-[500px] h-[500px] rounded-full overflow-hidden [mask-image:_radial-gradient(black,_transparent_60%)]">
                         <div className="h-[200%] animate-endless">
                           <div className="absolute inset-0 [background:_repeating-linear-gradient(transparent,_transparent_48px,_theme(colors.white)_48px,_theme(colors.white)_49px)] blur-[2px] opacity-20" />
-                          <div className="absolute inset-0 [background:_repeating-linear-gradient(transparent,_transparent_48px,_theme(colors.purple.500)_48px,_theme(colors.purple.500)_49px)]" />
+                          <div className="absolute inset-0 [background:_repeating-linear-gradient(transparent,_transparent_48px,_theme(colors.green.500)_48px,_theme(colors.green.500)_49px)]" />
                           <div className="absolute inset-0 [background:_repeating-linear-gradient(90deg,transparent,_transparent_48px,_theme(colors.white)_48px,_theme(colors.white)_49px)] blur-[2px] opacity-20" />
-                          <div className="absolute inset-0 [background:_repeating-linear-gradient(90deg,transparent,_transparent_48px,_theme(colors.purple.500)_48px,_theme(colors.purple.500)_49px)]" />
+                          <div className="absolute inset-0 [background:_repeating-linear-gradient(90deg,transparent,_transparent_48px,_theme(colors.green.500)_48px,_theme(colors.green.500)_49px)]" />
                         </div>
                       </div>
                       {/* Icons */}

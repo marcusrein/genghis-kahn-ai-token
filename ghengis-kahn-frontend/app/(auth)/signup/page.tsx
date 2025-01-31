@@ -48,15 +48,15 @@ export default function SignUp() {
             </div>
           </div>
           <div className="mt-6">
-            <button className="btn text-sm text-white bg-purple-500 hover:bg-purple-600 w-full shadow-sm group">
-              Sign Up <span className="tracking-normal text-purple-300 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+            <button className="btn text-sm text-white bg-green-500 hover:bg-green-600 w-full shadow-sm group">
+              Sign Up <span className="tracking-normal text-green-300 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
             </button>
           </div>
         </form>
 
         <div className="text-center mt-4">
           <div className="text-sm text-slate-400">
-            Already have an account? <Link className="font-medium text-purple-500 hover:text-purple-400 transition duration-150 ease-in-out" href="/signin">Sign in</Link>
+            Already have an account? <Link className="font-medium text-green-500 hover:text-green-400 transition duration-150 ease-in-out" href="/signin">Sign in</Link>
           </div>
         </div>
 

@@ -35,7 +35,7 @@ export default function MembersPage() {
 							/>
 							<button
 								type="submit"
-								className="btn-sm text-slate-300 hover:text-white border border-purple-500 rounded-md px-4 py-2"
+								className="btn-sm text-slate-300 hover:text-white border border-green-500 rounded-md px-4 py-2"
 							>
 								Submit
 							</button>

@@ -57,7 +57,7 @@ input[type="search"]::-webkit-search-results-decoration {
 .form-select,
 .form-checkbox,
 .form-radio {
-    @apply bg-slate-800 border border-transparent focus:border-purple-500;
+    @apply bg-slate-800 border border-transparent focus:border-green-500;
 }
 
 .form-input,
@@ -86,7 +86,7 @@ input[type="search"]::-webkit-search-results-decoration {
 
 .form-checkbox,
 .form-radio {
-    @apply text-purple-600 rounded-sm;
+    @apply text-green-600 rounded-sm;
 }
 
 /* Chrome, Safari and Opera */

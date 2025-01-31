@@ -57,7 +57,10 @@ module.exports = {
           from: { transform: 'translateX(0)' },
           to: { transform: 'translateX(-100%)' },
         }        
-      }
+      },
+      colors: {
+        myCustomColor: '#ff7f50',
+      },
     },
   },
   plugins: [

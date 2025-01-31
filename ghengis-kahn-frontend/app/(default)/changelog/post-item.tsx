@@ -7,7 +7,7 @@ export default function PostItem({ ...props }) {
     <article className="pt-12 first-of-type:pt-0 group">
       <div className="md:flex">
         <div className="w-48 shrink-0">
-          <time className="text-sm inline-flex items-center bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 md:leading-8 before:w-1.5 before:h-1.5 before:rounded-full before:bg-purple-500 before:ring-4 before:ring-purple-500/30 mb-3">
+          <time className="text-sm inline-flex items-center bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-green-200 md:leading-8 before:w-1.5 before:h-1.5 before:rounded-full before:bg-green-500 before:ring-4 before:ring-green-500/30 mb-3">
             <span className="ml-[1.625rem] md:ml-5"><PostDate dateString={props.metadata.publishedAt} /></span>
           </time>
         </div>
@@ -18,7 +18,7 @@ export default function PostItem({ ...props }) {
           <figure className="bg-gradient-to-b from-slate-300/20 to-transparent rounded-3xl p-px mb-8">
             <Image className="w-full rounded-[inherit]" src={props.metadata.image} width={574} height={326} alt={props.metadata.title} />
           </figure>
-          <div className="prose max-w-none text-slate-400 prose-p:leading-relaxed prose-a:text-purple-500 prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-50 prose-strong:font-medium">
+          <div className="prose max-w-none text-slate-400 prose-p:leading-relaxed prose-a:text-green-500 prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-50 prose-strong:font-medium">
             <CustomMDX source={props.content} />
           </div>
         </div>

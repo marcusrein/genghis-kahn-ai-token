@@ -20,8 +20,8 @@ export default function Features03() {
               y1="14.544%"
               y2="100%"
             >
-              <stop offset="0%" stopColor="#6366F1" />
-              <stop offset="100%" stopColor="#6366F1" stopOpacity="0" />
+              <stop offset="0%" stopColor="#FBBF24" />
+              <stop offset="100%" stopColor="#FBBF24" stopOpacity="0" />
             </linearGradient>
           </defs>
           <path

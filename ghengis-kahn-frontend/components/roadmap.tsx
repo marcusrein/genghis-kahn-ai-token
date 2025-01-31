@@ -52,7 +52,7 @@ export default function Roadmap() {
           {/* Section header */}
           <div className="max-w-3xl mx-auto text-center pb-12 md:pb-20">
             <div>
-              <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-purple-200 pb-3">
+              <div className="inline-flex font-medium bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-green-200 pb-3">
                 Follow the Horde
               </div>
             </div>
@@ -88,7 +88,7 @@ export default function Roadmap() {
                       className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/3 aspect-square"
                       aria-hidden="true"
                     >
-                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-purple-500 transition-colors duration-500 ease-in-out blur-[60px]" />
+                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-green-500 transition-colors duration-500 ease-in-out blur-[60px]" />
                     </div>
                     <div className="flex flex-col p-6 h-full">
                       <Image
@@ -115,7 +115,7 @@ export default function Roadmap() {
                           href="#0"
                         >
                           Learn More{" "}
-                          <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
+                          <span className="tracking-normal text-green-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
                             -&gt;
                           </span>
                         </a>
@@ -136,7 +136,7 @@ export default function Roadmap() {
                       className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/3 aspect-square"
                       aria-hidden="true"
                     >
-                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-purple-500 transition-colors duration-500 ease-in-out blur-[60px]" />
+                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-green-500 transition-colors duration-500 ease-in-out blur-[60px]" />
                     </div>
                     <div className="flex flex-col p-6 h-full">
                       <Image
@@ -163,7 +163,7 @@ export default function Roadmap() {
                           href="#0"
                         >
                           Learn More{" "}
-                          <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
+                          <span className="tracking-normal text-green-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
                             -&gt;
                           </span>
                         </a>
@@ -184,7 +184,7 @@ export default function Roadmap() {
                       className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/3 aspect-square"
                       aria-hidden="true"
                     >
-                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-purple-500 transition-colors duration-500 ease-in-out blur-[60px]" />
+                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-green-500 transition-colors duration-500 ease-in-out blur-[60px]" />
                     </div>
                     <div className="flex flex-col p-6 h-full">
                       <Image
@@ -211,7 +211,7 @@ export default function Roadmap() {
                           href="#0"
                         >
                           Learn More{" "}
-                          <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
+                          <span className="tracking-normal text-green-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
                             -&gt;
                           </span>
                         </a>
@@ -232,7 +232,7 @@ export default function Roadmap() {
                       className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/3 aspect-square"
                       aria-hidden="true"
                     >
-                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-purple-500 transition-colors duration-500 ease-in-out blur-[60px]" />
+                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-green-500 transition-colors duration-500 ease-in-out blur-[60px]" />
                     </div>
                     <div className="flex flex-col p-6 h-full">
                       <Image
@@ -258,7 +258,7 @@ export default function Roadmap() {
                           href="#0"
                         >
                           Learn More{" "}
-                          <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
+                          <span className="tracking-normal text-green-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
                             -&gt;
                           </span>
                         </a>
@@ -279,7 +279,7 @@ export default function Roadmap() {
                       className="absolute bottom-0 translate-y-1/2 left-1/2 -translate-x-1/2 pointer-events-none -z-10 w-1/3 aspect-square"
                       aria-hidden="true"
                     >
-                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-purple-500 transition-colors duration-500 ease-in-out blur-[60px]" />
+                      <div className="absolute inset-0 translate-z-0 rounded-full bg-slate-800 group-[.swiper-slide-active]/slide:bg-green-500 transition-colors duration-500 ease-in-out blur-[60px]" />
                     </div>
                     <div className="flex flex-col p-6 h-full">
                       <Image
@@ -306,7 +306,7 @@ export default function Roadmap() {
                           href="#0"
                         >
                           Learn More{" "}
-                          <span className="tracking-normal text-purple-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
+                          <span className="tracking-normal text-green-500 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">
                             -&gt;
                           </span>
                         </a>
@@ -323,7 +323,7 @@ export default function Roadmap() {
             <button className="carousel-prev relative z-20 w-12 h-12 flex items-center justify-center group">
               <span className="sr-only">Previous</span>
               <svg
-                className="w-4 h-4 fill-slate-500 group-hover:fill-purple-500 transition duration-150 ease-in-out"
+                className="w-4 h-4 fill-slate-500 group-hover:fill-green-500 transition duration-150 ease-in-out"
                 viewBox="0 0 16 16"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -333,7 +333,7 @@ export default function Roadmap() {
             <button className="carousel-next relative z-20 w-12 h-12 flex items-center justify-center group">
               <span className="sr-only">Next</span>
               <svg
-                className="w-4 h-4 fill-slate-500 group-hover:fill-purple-500 transition duration-150 ease-in-out"
+                className="w-4 h-4 fill-slate-500 group-hover:fill-green-500 transition duration-150 ease-in-out"
                 viewBox="0 0 16 16"
                 xmlns="http://www.w3.org/2000/svg"
               >

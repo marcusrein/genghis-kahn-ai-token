@@ -29,21 +29,21 @@ export default function SignIn() {
             <div>
               <div className="flex justify-between">
                 <label className="block text-sm text-slate-300 font-medium mb-1" htmlFor="password">Password</label>
-                <Link className="text-sm font-medium text-purple-500 hover:text-purple-400 transition duration-150 ease-in-out ml-2" href="/reset-password">Forgot?</Link>
+                <Link className="text-sm font-medium text-green-500 hover:text-green-400 transition duration-150 ease-in-out ml-2" href="/reset-password">Forgot?</Link>
               </div>
               <input id="password" className="form-input w-full" type="password" autoComplete="on" required />
             </div>
           </div>
           <div className="mt-6">
-            <button className="btn text-sm text-white bg-purple-500 hover:bg-purple-600 w-full shadow-sm group">
-              Sign In <span className="tracking-normal text-purple-300 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
+            <button className="btn text-sm text-white bg-green-500 hover:bg-green-600 w-full shadow-sm group">
+              Sign In <span className="tracking-normal text-green-300 group-hover:translate-x-0.5 transition-transform duration-150 ease-in-out ml-1">-&gt;</span>
             </button>
           </div>
         </form>
 
         <div className="text-center mt-4">
           <div className="text-sm text-slate-400">
-            Don't have an account? <Link className="font-medium text-purple-500 hover:text-purple-400 transition duration-150 ease-in-out" href="/signup">Sign up</Link>
+            Don't have an account? <Link className="font-medium text-green-500 hover:text-green-400 transition duration-150 ease-in-out" href="/signup">Sign up</Link>
           </div>
         </div>
 
