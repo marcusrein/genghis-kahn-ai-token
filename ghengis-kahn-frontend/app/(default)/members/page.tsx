@@ -5,26 +5,31 @@ import TerminalBot from "../../../components/TerminalBot";
 
 export default function MembersPage() {
   return (
-    <>
-      {/* Header at the top */}
-      <Header />
+		<>
+			{/* Header at the top */}
+			<Header />
 
-      {/* Main Content */}
-      <main className="pt-32 pb-16 md:pt-52 md:pb-32">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6">
-          <h1 className="h1 mb-8 text-slate-200">Membership Overview</h1>
-          <p className="text-lg text-slate-300 mb-6">
-            Welcome to the $KAHN Membership page. Here, you can learn more about
-            our exclusive benefits and how to get involved in our community.
-          </p>
-          <p className="text-lg text-slate-300 mb-6">
-            Join the horde of crypto developers and enthusiasts to build the best
-            crypto AI and learning experience possible!
-          </p>
-          {/* Terminal Bot Component */}
-          <TerminalBot />
-        </div>
-      </main>
-    </>
-  );
+			{/* Main Content */}
+			<main className="pt-32 pb-16 md:pt-52 md:pb-32">
+				<div className="max-w-6xl mx-auto px-4 sm:px-6">
+					<h1 className="h1 mb-8 text-slate-200">$KAHN Membership</h1>
+					<p className="text-lg text-slate-300 mb-6">
+						Members have access to the Genghis Kahn AI (updated 1.30.25) v.0.1
+						and the {" "}
+						<a
+							href="https://discord.gg/FckzFjK9jR"
+							className="text-blue-500 hover:underline"
+						>
+							Genghis Kahn AI Discord
+						</a>
+						.
+					</p>
+					{/* Terminal Bot Component */}
+					<TerminalBot />
+				</div>
+			</main>
+		</>
+	);
 }
+
+
