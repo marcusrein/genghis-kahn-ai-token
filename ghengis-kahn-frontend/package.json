@@ -31,6 +31,7 @@
     "next-mdx-remote": "^5.0.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
+    "react-terminal-ui": "^1.4.0",
     "rehype-pretty-code": "^0.14.0",
     "shiki": "^1.10.1",
     "swiper": "^8.4.7",

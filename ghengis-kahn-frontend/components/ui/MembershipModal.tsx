@@ -32,7 +32,8 @@ export default function MembershipModal({
 
         {/* Modal content */}
         <h1 className="text-2xl font-semibold text-slate-200 mb-4 underline">
-Membership Information        </h1>
+          Membership Information
+        </h1>
 
         {/* Show networkError if present */}
         {networkError ? (
@@ -50,7 +51,7 @@ Membership Information        </h1>
             {isMember ? (
               <>
                 <p className="text-slate-300">
-                  Welcome Member! 
+                  Welcome Member!
                   <br />
                   <br />
                   Join the
@@ -64,10 +65,21 @@ Membership Information        </h1>
                   </a>
                   !
                 </p>
+                {/* Link to the new Members page */}
+                <div className="mt-4">
+                  
+                  <a
+                    href="/members"
+                    className="underline text-blue-400 hover:text-blue-200"
+                    onClick={onClose}
+                  >
+                    Try out Genghis Kahn AI v0.1 (updated 1.30.2025)
+                  </a>
+                </div>
               </>
             ) : (
               <p className="text-slate-300">
-                You are <span className="font-bold text-red-500">NOT</span> a Member. 
+                You are <span className="font-bold text-red-500">NOT</span> a Member.
                 <br />
                 <br />
                 Join the Horde!
@@ -80,7 +92,7 @@ Membership Information        </h1>
                   rel="noopener noreferrer"
                   className="text-blue-400 hover:underline ml-1"
                 >
-                CreatorBid
+                  CreatorBid
                 </a>{" "}
                 to become a Member.
               </p>
