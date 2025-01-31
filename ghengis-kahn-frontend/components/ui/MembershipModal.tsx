@@ -75,6 +75,8 @@ export default function MembershipModal({
                   >
                     Try out Genghis Kahn AI v0.1 (updated 1.30.2025)
                   </a>
+                  <br />
+                  <p>The password is "hello world of kahn"</p>
                 </div>
               </>
             ) : (
