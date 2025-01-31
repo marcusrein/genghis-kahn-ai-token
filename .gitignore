@@ -3,3 +3,4 @@
 genghiskahn-bot/.venv
 ghengis-kahn-frontend/node_modules
 subgraph/generated
+ghengis-kahn-frontend/.env

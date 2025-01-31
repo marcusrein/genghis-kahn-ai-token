@@ -1,5 +1,8 @@
+"use client";
+
 import React, { useState } from 'react';
 import Terminal, { ColorMode, TerminalOutput } from 'react-terminal-ui';
+
 
 export default function TerminalBot() {
   const [terminalLineData, setTerminalLineData] = useState([
@@ -10,12 +13,16 @@ export default function TerminalBot() {
     console.log('[TerminalBot] User input:', terminalInput);
 
     try {
-      const response = await fetch('/api/run-bot', {
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`, // Ensure your API key is set in your environment
         },
-        body: JSON.stringify({ command: terminalInput }),
+        body: JSON.stringify({
+          model: 'gpt-4o-mini',
+          messages: [{ role: 'user', content: terminalInput }],
+        }),
       });
 
       console.log('[TerminalBot] API response status:', response.status);
@@ -23,11 +30,19 @@ export default function TerminalBot() {
       const data = await response.json();
       console.log('[TerminalBot] API response data:', data);
 
-      setTerminalLineData((prev) => [
-        ...prev,
-        <TerminalOutput key={`input-${Date.now()}`}>{`> ${terminalInput}`}</TerminalOutput>,
-        <TerminalOutput key={`output-${Date.now()}`}>{data.output}</TerminalOutput>,
-      ]);
+      if (data.choices && data.choices.length > 0) {
+        setTerminalLineData((prev) => [
+          ...prev,
+          <TerminalOutput key={`input-${Date.now()}`}>{`> ${terminalInput}`}</TerminalOutput>,
+          <TerminalOutput key={`output-${Date.now()}`}>{data.choices[0].message.content}</TerminalOutput>,
+        ]);
+      } else {
+        setTerminalLineData((prev) => [
+          ...prev,
+          <TerminalOutput key={`input-${Date.now()}`}>{`> ${terminalInput}`}</TerminalOutput>,
+          <TerminalOutput key={`output-${Date.now()}`}>No response from OpenAI</TerminalOutput>,
+        ]);
+      }
     } catch (error) {
       console.error('[TerminalBot] Error executing command:', error);
       setTerminalLineData((prev) => [
