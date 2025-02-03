@@ -52,11 +52,10 @@ function wrapText(text: string, maxLen: number): string {
 
 export default function TerminalBot() {
 	const [terminalLineData, setTerminalLineData] = useState([
-		<TerminalOutput
-			key="initial"
-			style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}
-		>
-			Welcome to the Genghis Khan AI Bot!
+		<TerminalOutput key="initial">
+			<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
+				Welcome to the Genghis Khan AI Bot!
+			</div>
 		</TerminalOutput>,
 	]);
 
@@ -166,33 +165,29 @@ By combining personalization, motivational engagement, and dynamic interaction, 
 
 				setTerminalLineData((prev) => [
 					...prev,
-					<TerminalOutput
-						key={`input-${Date.now()}`}
-						style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}
-					>
-						{`> ${terminalInput}`}
+					<TerminalOutput key={`input-${Date.now()}`}>
+						<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
+							{`> ${terminalInput}`}
+						</div>
 					</TerminalOutput>,
-					<TerminalOutput
-						key={`output-${Date.now()}`}
-						style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}
-					>
-						{wrappedReply}
+					<TerminalOutput key={`output-${Date.now()}`}>
+						<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
+							{wrappedReply}
+						</div>
 					</TerminalOutput>,
 				]);
 			} else {
 				setTerminalLineData((prev) => [
 					...prev,
-					<TerminalOutput
-						key={`input-${Date.now()}`}
-						style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}
-					>
-						{`> ${terminalInput}`}
+					<TerminalOutput key={`input-${Date.now()}`}>
+						<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
+							{`> ${terminalInput}`}
+						</div>
 					</TerminalOutput>,
-					<TerminalOutput
-						key={`output-${Date.now()}`}
-						style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}
-					>
-						No response from OpenAI
+					<TerminalOutput key={`output-${Date.now()}`}>
+						<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
+							No response from OpenAI
+						</div>
 					</TerminalOutput>,
 				]);
 			}
@@ -200,16 +195,14 @@ By combining personalization, motivational engagement, and dynamic interaction, 
 			console.error("[TerminalBot] Error executing command:", error);
 			setTerminalLineData((prev) => [
 				...prev,
-				<TerminalOutput
-					key={`error-${Date.now()}`}
-					style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}
-				>
-					Error executing command
+				<TerminalOutput key={`error-${Date.now()}`}>
+					<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
+						Error executing command
+					</div>
 				</TerminalOutput>,
 			]);
 		}
 	};
-
 	return (
 		<div className="container max-w-[1000px]">
 			<Terminal
