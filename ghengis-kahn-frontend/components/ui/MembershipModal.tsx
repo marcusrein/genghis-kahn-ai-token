@@ -74,8 +74,9 @@ export default function MembershipModal({
                     onClick={onClose}
                   >
                     Try out Genghis Kahn AI v0.2 (updated 2.12.2025)
-                  </a>
+                  </a>  
                   <br />
+                  <p>The password is "hello world"</p>
                 </div>
               </>
             ) : (
