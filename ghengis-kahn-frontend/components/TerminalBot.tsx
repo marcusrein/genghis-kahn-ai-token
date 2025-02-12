@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Terminal, { ColorMode, TerminalOutput } from "react-terminal-ui";
+import Terminal, { ColorMode, TerminalInput, TerminalOutput } from "react-terminal-ui";
 
 // Helper function that forcibly wraps text at 'maxLen' characters.
 // This ensures lines never exceed your chosen limit (e.g. 80 chars).
@@ -114,27 +114,44 @@ const resources = [
 ];
 
 export default function TerminalBot() {
-	const [terminalLineData, setTerminalLineData] = useState([
-		<TerminalOutput key="initial">
-			<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
-				Welcome to the Genghis Khan AI Bot!
-			</div>
-		</TerminalOutput>,
+	const [isAuthenticated, setIsAuthenticated] = useState(false);
+	const [password, setPassword] = useState("");
+	const [error, setError] = useState("");
+	const [terminalLineData, setTerminalLineData] = useState<JSX.Element[]>([
+		<TerminalOutput>Welcome to the Genghis Khan AI Bot!</TerminalOutput>,
+		<TerminalOutput>$</TerminalOutput>,
 	]);
 
+	const handlePasswordSubmit = (e: React.FormEvent) => {
+		e.preventDefault();
+		const correctPassword = process.env.NEXT_PUBLIC_TERMINAL_PASSWORD;
+
+		if (!correctPassword) {
+			console.error("[TerminalBot] Configuration error");
+			setError("System error. Please try again later.");
+			return;
+		}
+
+		if (password === correctPassword) {
+			setIsAuthenticated(true);
+			setError("");
+		} else {
+			setError("Incorrect password");
+		}
+	};
+
 	const handleInput = async (terminalInput: string) => {
-		console.log("[TerminalBot] Environment variables:", {
-			apiUrl: process.env.NEXT_PUBLIC_GRAPH_AI_URL,
-			hasApiKey: !!process.env.NEXT_PUBLIC_THE_GRAPH_AI_API
-		});
+		if (!isAuthenticated) {
+			return;
+		}
 
 		if (!process.env.NEXT_PUBLIC_GRAPH_AI_URL) {
-			console.error("[TerminalBot] Missing API URL environment variable");
+			console.error("[TerminalBot] Configuration error");
 			setTerminalLineData((prev) => [
 				...prev,
 				<TerminalOutput key={`error-${Date.now()}`}>
 					<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
-						Configuration error: API URL not set
+						Service temporarily unavailable
 					</div>
 				</TerminalOutput>,
 			]);
@@ -254,8 +271,30 @@ export default function TerminalBot() {
 			]);
 		}
 	};
+
 	return (
-		<div className="container max-w-[1000px]">
+		<div className="relative">
+			{!isAuthenticated && (
+				<div className="absolute inset-0 z-10 bg-slate-900/95 rounded-lg flex items-center justify-center">
+					<form onSubmit={handlePasswordSubmit} className="w-64">
+						<input
+							type="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							className="w-full bg-slate-800 text-white px-4 py-2 rounded-lg mb-4"
+							placeholder="Enter password"
+							autoFocus
+						/>
+						{error && <p className="text-red-500 mb-4 text-center text-sm">{error}</p>}
+						<button
+							type="submit"
+							className="w-full btn-sm text-slate-300 hover:text-white transition duration-150 ease-in-out [background:linear-gradient(theme(colors.slate.900),_theme(colors.slate.900))_padding-box,_conic-gradient(theme(colors.slate.400),_theme(colors.slate.700)_25%,_theme(colors.slate.700)_75%,_theme(colors.slate.400)_100%)_border-box]"
+						>
+							Unlock Terminal
+						</button>
+					</form>
+				</div>
+			)}
 			<Terminal
 				name="Genghis Khan AI Bot"
 				colorMode={ColorMode.Dark}

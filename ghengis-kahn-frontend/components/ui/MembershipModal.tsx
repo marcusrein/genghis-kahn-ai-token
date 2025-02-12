@@ -73,10 +73,9 @@ export default function MembershipModal({
                     className="underline text-blue-400 hover:text-blue-200"
                     onClick={onClose}
                   >
-                    Try out Genghis Kahn AI v0.1 (updated 1.30.2025)
+                    Try out Genghis Kahn AI v0.2 (updated 2.12.2025)
                   </a>
                   <br />
-                  <p>The password is "hello world of kahn"</p>
                 </div>
               </>
             ) : (
