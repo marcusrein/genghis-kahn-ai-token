@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, ReactElement } from "react";
 import Terminal, { ColorMode, TerminalInput, TerminalOutput } from "react-terminal-ui";
 
 // Helper function that forcibly wraps text at 'maxLen' characters.
@@ -117,9 +117,9 @@ export default function TerminalBot() {
 	const [isAuthenticated, setIsAuthenticated] = useState(false);
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState("");
-	const [terminalLineData, setTerminalLineData] = useState<JSX.Element[]>([
-		<TerminalOutput>Welcome to the Genghis Khan AI Bot!</TerminalOutput>,
-		<TerminalOutput>$</TerminalOutput>,
+	const [terminalLineData, setTerminalLineData] = useState<ReactElement[]>([
+		<TerminalOutput key="welcome">Welcome to the Genghis Khan AI Bot!</TerminalOutput>,
+		<TerminalOutput key="prompt">$</TerminalOutput>,
 	]);
 
 	const handlePasswordSubmit = (e: React.FormEvent) => {
@@ -164,6 +164,15 @@ export default function TerminalBot() {
 		}
 
 		try {
+			setTerminalLineData((prev) => [
+				...prev,
+				<TerminalOutput key={`input-${Date.now()}`}>
+					<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
+						{`> ${terminalInput}`}
+					</div>
+				</TerminalOutput>,
+			]);
+
 			const requestBody = {
 				inputs: {},
 				query: terminalInput,
@@ -189,11 +198,6 @@ export default function TerminalBot() {
 				console.error("[TerminalBot] Error response body:", errorText);
 				setTerminalLineData((prev) => [
 					...prev,
-					<TerminalOutput key={`input-${Date.now()}`}>
-						<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
-							{`> ${terminalInput}`}
-						</div>
-					</TerminalOutput>,
 					<TerminalOutput key={`error-${Date.now()}`}>
 						<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere", color: "red" }}>
 							Error: Unable to process request. Please try again.
@@ -202,16 +206,6 @@ export default function TerminalBot() {
 				]);
 				return;
 			}
-
-			// Show user input immediately
-			setTerminalLineData((prev) => [
-				...prev,
-				<TerminalOutput key={`input-${Date.now()}`}>
-					<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
-						{`> ${terminalInput}`}
-					</div>
-				</TerminalOutput>,
-			]);
 
 			const reader = response.body?.getReader();
 			const decoder = new TextDecoder();
@@ -259,13 +253,13 @@ export default function TerminalBot() {
 					}
 				}
 			}
-		} catch (error) {
-			console.error("[TerminalBot] Error executing command:", error);
+		} catch (err) {
+			const errorMessage = err instanceof Error ? err.message : "An unknown error occurred";
 			setTerminalLineData((prev) => [
 				...prev,
 				<TerminalOutput key={`error-${Date.now()}`}>
 					<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere", color: "red" }}>
-						{`Error: ${error.message}`}
+						{`Error: ${errorMessage}`}
 					</div>
 				</TerminalOutput>,
 			]);
