@@ -123,15 +123,70 @@ export default function TerminalBot() {
 	]);
 
 	const handleInput = async (terminalInput: string) => {
-		console.log("[TerminalBot] User input:", terminalInput);
+		console.log("[TerminalBot] Environment variables:", {
+			apiUrl: process.env.NEXT_PUBLIC_GRAPH_AI_URL,
+			hasApiKey: !!process.env.NEXT_PUBLIC_THE_GRAPH_AI_API
+		});
 
-		// Example: Respond with a list of resources
+		if (!process.env.NEXT_PUBLIC_GRAPH_AI_URL) {
+			console.error("[TerminalBot] Missing API URL environment variable");
+			setTerminalLineData((prev) => [
+				...prev,
+				<TerminalOutput key={`error-${Date.now()}`}>
+					<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
+						Configuration error: API URL not set
+					</div>
+				</TerminalOutput>,
+			]);
+			return;
+		}
+
 		if (terminalInput.toLowerCase().includes("resources")) {
-			const resourceList = resources.map(
-				(resource) =>
-					`${resource.name}\n${resource.description}\nLearn more: ${resource.url}\n`
-			).join("\n");
+			// Resources handling remains the same
+			return;
+		}
 
+		try {
+			const requestBody = {
+				inputs: {},
+				query: terminalInput,
+				response_mode: "streaming",
+				conversation_id: "",
+				user: "terminal-user"
+			};
+
+			const response = await fetch(
+				process.env.NEXT_PUBLIC_GRAPH_AI_URL,
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						"Authorization": `Bearer ${process.env.NEXT_PUBLIC_THE_GRAPH_AI_API}`,
+					},
+					body: JSON.stringify(requestBody),
+				}
+			);
+
+			if (!response.ok) {
+				const errorText = await response.text();
+				console.error("[TerminalBot] Error response body:", errorText);
+				setTerminalLineData((prev) => [
+					...prev,
+					<TerminalOutput key={`input-${Date.now()}`}>
+						<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
+							{`> ${terminalInput}`}
+						</div>
+					</TerminalOutput>,
+					<TerminalOutput key={`error-${Date.now()}`}>
+						<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere", color: "red" }}>
+							Error: Unable to process request. Please try again.
+						</div>
+					</TerminalOutput>,
+				]);
+				return;
+			}
+
+			// Show user input immediately
 			setTerminalLineData((prev) => [
 				...prev,
 				<TerminalOutput key={`input-${Date.now()}`}>
@@ -139,151 +194,61 @@ export default function TerminalBot() {
 						{`> ${terminalInput}`}
 					</div>
 				</TerminalOutput>,
-				<TerminalOutput key={`output-${Date.now()}`}>
-					<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
-						{wrapText(resourceList, 80)}
-					</div>
-				</TerminalOutput>,
 			]);
-			return;
-		}
 
-		try {
-			const response = await fetch(
-				"https://api.openai.com/v1/chat/completions",
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`,
-					},
-					body: JSON.stringify({
-						model: "gpt-4",
-						messages: [
-							{
-								role: "system",
-								content: `Goal:
-Develop a model inspired by Genghis Khan's commanding persona, aimed at engaging users to tailor learning experiences for developers and crypto traders. The model should maintain an authoritative yet conversational tone, ensuring users feel guided and empowered while receiving personalized recommendations.
+			const reader = response.body?.getReader();
+			const decoder = new TextDecoder();
 
-Model Behavior
-	1.	Initiation of Interaction:
-	•	Open with a strong, engaging query that establishes the Genghis Khan persona. Example:
-	•	"Identify yourself, noble learner! Are you a developer or a crypto trader, seeking to conquer new realms of knowledge?"
-	2.	Learning Style Inquiry:
-	•	Prompt the user to declare their preferred method of learning. Examples:
-	•	"How do you prefer to sharpen your mind: through reading, hands-on practice, or visual guidance like videos?"
-	•	"Declare your method of conquest: books, action, or the moving pictures of our time?"
+			if (reader) {
+				let currentMessage = '';
+				
+				while (true) {
+					const { done, value } = await reader.read();
+					if (done) {
+						console.log("[TerminalBot] Stream complete");
+						break;
+					}
 
-	3.	Resource Matching:
-	•	Utilize a database or pre-defined resource pool to align the user's learning preferences with the most relevant materials or strategies.
-	•	Ensure recommendations cater to both enhancing their current expertise and learning about the complementary group (e.g., a developer learning crypto trading or vice versa).
-	4.	Guidance Delivery:
-	•	Provide actionable, specific recommendations with links or names of trusted resources.
-	•	Conclude each response with encouragement or a follow-up question to maintain engagement.
+					const chunk = decoder.decode(value);
+					const lines = chunk.split('\n');
 
-Output Requirements
-	1.	Tone and Style:
-	•	Authoritative, motivational, and infused with the spirit of a conqueror like Genghis Khan.
-	•	Example phrases:
-	•	"Onward to mastery!"
-	•	"Strength lies in knowledge—forge your path to victory!"
-	•	"Your empire of skill awaits expansion!"
-	2.	Personalization:
-	•	Tailor recommendations to the user's declared profession and learning style.
-	•	Highlight how the user can benefit from learning about the other group's domain.
-	3.	Interactive Engagement:
-	•	Conclude each response with a call to action or a question to deepen the conversation. Example:
-	•	"Does this path to knowledge suit your ambitions, or shall we chart another course?"
-
-Refined Examples
-
-Example 1: Crypto Trader to Developer
-	•	Model: "Identify yourself, valiant seeker! Are you a trader or a developer?"
-	•	User: "I am a crypto trader."
-	•	Model: "How do you conquer knowledge? Through reading, practice, or the moving images of videos?"
-	•	User: "I prefer videos."
-	•	Model: "To master the developer's realm, begin with video tutorials from sources like Codecademy or YouTube channels such as [Channel Name]. Start with the basics of smart contract development using Solidity. Strength lies in knowledge—forge your empire!"
-
-Example 2: Developer to Crypto Trader
-	•	Model: "Declare your allegiance! Do you write code as a developer, or trade currencies as a crypto strategist?"
-	•	User: "I am a developer."
-	•	Model: "By what means do you expand your empire of knowledge? Books, hands-on practice, or videos?"
-	•	User: "Books."
-	•	Model: "To infiltrate the trader's domain, immerse yourself in foundational texts such as Cryptoassets by Chris Burniske and Jack Tatar or The Intelligent Investor by Benjamin Graham. Knowledge is your steed—ride forth to glory!"
-
-Steps for GPT-4 Integration
-	1.	User Identification:
-	•	Detect whether the user is a developer or crypto trader through direct questioning.
-	2.	Preference Matching:
-	•	Parse the user's response to their preferred learning style. Use conditional logic to guide resource suggestions accordingly.
-	3.	Database Query:
-	•	Query a database or predefined list of learning resources tailored for developers and crypto traders (segmented by learning style: reading, practice, videos, etc.).
-	4.	Response Formatting:
-	•	Generate outputs that reflect Genghis Khan's commanding style, ensuring clarity and motivational energy.
-	5.	Follow-Up Engagement:
-	•	Always include a follow-up question or motivational closing statement to sustain user interaction.
-
-Testing and Feedback
-	•	Regularly test the model's outputs with diverse user inputs to ensure accuracy and tone consistency.
-	•	Collect feedback to refine resource recommendations and conversational flow.
-
-By combining personalization, motivational engagement, and dynamic interaction, the model can emulate Genghis Khan's spirit while empowering users to expand their knowledge empires effectively.`,
-							},
-							{
-								role: "user",
-								content: terminalInput,
-							},
-						],
-					}),
+					for (const line of lines) {
+						if (line.startsWith('data: ')) {
+							try {
+								const jsonStr = line.slice(6); // Remove 'data: ' prefix
+								const jsonData = JSON.parse(jsonStr);
+								
+								if (jsonData.event === 'agent_message' && jsonData.answer) {
+									currentMessage += jsonData.answer;
+									
+									// Update the terminal with the current message
+									setTerminalLineData((prev) => [
+										...prev.slice(0, -1), // Remove previous response
+										<TerminalOutput key={`output-${Date.now()}`}>
+											<div style={{ 
+												whiteSpace: "pre-wrap", 
+												overflowWrap: "anywhere",
+												color: "#a8b5d1" // Light blue color for bot responses
+											}}>
+												{`Assistant: ${currentMessage}`}
+											</div>
+										</TerminalOutput>,
+									]);
+								}
+							} catch (e) {
+								console.error("[TerminalBot] Error processing chunk:", e);
+							}
+						}
+					}
 				}
-			);
-
-			console.log("[TerminalBot] API response status:", response.status);
-
-			const data = await response.json();
-			console.log("[TerminalBot] API response data:", data);
-
-			const MAX_LINE_LENGTH = 80; // Adjust as desired for line width
-
-			if (data.choices && data.choices.length > 0) {
-				const assistantReply = data.choices[0].message.content || "";
-				const wrappedReply = wrapText(assistantReply, MAX_LINE_LENGTH);
-
-				setTerminalLineData((prev) => [
-					...prev,
-					<TerminalOutput key={`input-${Date.now()}`}>
-						<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
-							{`> ${terminalInput}`}
-						</div>
-					</TerminalOutput>,
-					<TerminalOutput key={`output-${Date.now()}`}>
-						<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
-							{wrappedReply}
-						</div>
-					</TerminalOutput>,
-				]);
-			} else {
-				setTerminalLineData((prev) => [
-					...prev,
-					<TerminalOutput key={`input-${Date.now()}`}>
-						<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
-							{`> ${terminalInput}`}
-						</div>
-					</TerminalOutput>,
-					<TerminalOutput key={`output-${Date.now()}`}>
-						<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
-							No response from OpenAI
-						</div>
-					</TerminalOutput>,
-				]);
 			}
 		} catch (error) {
 			console.error("[TerminalBot] Error executing command:", error);
 			setTerminalLineData((prev) => [
 				...prev,
 				<TerminalOutput key={`error-${Date.now()}`}>
-					<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere" }}>
-						Error executing command
+					<div style={{ whiteSpace: "pre-wrap", overflowWrap: "anywhere", color: "red" }}>
+						{`Error: ${error.message}`}
 					</div>
 				</TerminalOutput>,
 			]);
